@@ -2,7 +2,7 @@
 import "./App.css";
 
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Home from "scenes/home";

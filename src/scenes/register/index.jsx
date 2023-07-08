@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,23 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    let data = {
+      username,
+      email,
+      password,
+    };
+
+    axios
+      .post("http://localhost:9090/register", data)
+      .then((response) => {
+        // Handle the response
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // Handle the error
+        console.log(error);
+      });
   };
 
   return (
@@ -67,6 +85,7 @@ const Register = () => {
                   paddingRight: "2.5rem",
                   marginBottom: "0.5rem",
                 }}
+                onClick={handleSubmit}
               >
                 Register
               </button>

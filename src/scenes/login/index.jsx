@@ -1,14 +1,40 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import UserContext from "context/user/UserContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { user, login, logout } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    //impending api call for /login
+
+    let data = {
+      email,
+      password,
+    };
+
+    axios
+      .post("http://localhost:9090/login", data)
+      .then((response) => {
+        // Handle the response
+        console.log(response.data);
+        if (response.data.loginData === "success") {
+          login(response.data.userData);
+        }
+      })
+      .catch((error) => {
+        // Handle the error
+        console.log(error);
+      });
   };
 
   return (
@@ -58,6 +84,7 @@ const Login = () => {
                   paddingRight: "2.5rem",
                   marginBottom: "0.5rem",
                 }}
+                onClick={handleSubmit}
               >
                 Login
               </button>
