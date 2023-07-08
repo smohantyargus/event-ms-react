@@ -12,7 +12,7 @@ import Login from "scenes/login";
 import Register from "scenes/register";
 
 function App() {
-  const mode = useSelector((state) => state.global.mode);
+  // const mode = useSelector((state) => state.global.mode);
   return (
     <div className="App">
       <BrowserRouter>

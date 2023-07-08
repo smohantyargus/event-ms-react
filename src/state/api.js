@@ -1,25 +1,29 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const api = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:9090/",
-  }),
-  reducerPath: "adminApi",
-  tagTypes: ["User", "UserSearch"],
-  endpoints: (build) => ({
-    getStudent: build.query({
-      query: (roll) => `api/students/${roll}`,
-      providesTags: ["User"],
-    }),
-    getStudentBySearch: build.query({
-      query: ({ name, batch }) => ({
-        url: "api/students/search",
-        method: "GET",
-        params: { name, batch },
-      }),
-      providesTags: ["UserSearch"],
-    }),
-  }),
-});
+// export const api = createApi({
+//   baseQuery: fetchBaseQuery({
+//     baseUrl: "http://192.1.200.111:9090/",
+//   }),
+//   reducerPath: "adminApi",
+//   tagTypes: ["User", "EventSearch"],
+//   endpoints: (build) => ({
+//     loginUser: build.query({
+//       query: ({ email, password }) => `login`,
+//       providesTags: ["User"],
+//     }),
+//     getEvents: build.query({
+//       query: (roll) => `getEvents`,
+//       providesTags: ["User"],
+//     }),
+//     getEventById: build.query({
+//       query: ({ id }) => ({
+//         url: `events/${id}`,
+//         method: "GET",
+//         params: { id },
+//       }),
+//       providesTags: ["EventSearch"],
+//     }),
+//   }),
+// });
 
-export const { useGetStudentQuery, useGetStudentBySearchQuery } = api;
+// export const { useGetEventsQuery, useGetEventByIdQuery } = api;
