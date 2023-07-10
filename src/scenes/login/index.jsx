@@ -113,6 +113,8 @@ const Login = () => {
                   paddingLeft: "2.5rem",
                   paddingRight: "2.5rem",
                   marginBottom: "0.5rem",
+                  backgroundColor: "#802f59",
+                  borderColor: "#802f59",
                 }}
                 onClick={handleSubmit}
               >

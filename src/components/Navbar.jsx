@@ -28,15 +28,16 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        class="navbar navbar-expand-lg navbar-light"
-        style={{ backgroundColor: "#e3f2fd" }}
+        class="navbar navbar-expand-lg navbar-light shadow p-3 mb-3"
+        style={{ backgroundColor: "#f5f5f5" }}
       >
         <div class="container-fluid">
           {/* <a class="navbar-brand" href="/">
             Event Management System
           </a> */}
           <Link class="navbar-brand" to="/">
-            Event Management System
+            <img src="https://apps.argusoft.com/ems/assets/images/logo.png" />
+            {/* Event Management System */}
           </Link>
           <button
             class="navbar-toggler"
@@ -70,7 +71,8 @@ const Navbar = () => {
             </ul>
           </div>
           <button
-            class="btn btn-outline-success my-2 my-sm-0"
+            style={{ backgroundColor: "#802f59", borderColor: "#802f59" }}
+            class="btn btn-primary my-2 my-sm-0"
             onClick={handleLogout}
           >
             Logout
