@@ -32,17 +32,22 @@ const Events = () => {
               <div className="event ag-courses_item">
                 {/* <h3>{event.eventTitle}</h3>
                 <p>{event.eventDescription.substring(0,25)}</p> */}
-                <a href="#" class="ag-courses-item_link">
-                  <div class="ag-courses-item_bg"></div>
+                <a href="#" className="ag-courses-item_link">
+                  <div className="ag-courses-item_bg"></div>
 
-                  <div class="ag-courses-item_title">
+                  <div className="ag-courses-item_title">
                     {event.eventTitle}
                   </div>
 
-                  <div class="ag-courses-item_date-box">
+                  <div className="ag-courses-item_date-box">
                     Start:
-                    <span class="ag-courses-item_date">{event.eventStartTime}</span>
-                    
+                    <span className="ag-courses-item_date">  {event.eventStartTime}</span>
+                  </div>
+                  <div className="ag-courses-item_date-box">
+                    {event.eventLocation}
+                  </div>
+                  <div className="ag-courses-item_date-box">
+                    {event.eventDate.substring(0,10)}
                   </div>
                 </a>
               </div>
