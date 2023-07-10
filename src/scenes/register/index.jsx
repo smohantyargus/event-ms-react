@@ -9,6 +9,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const role = "";
 
   const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ const Register = () => {
       username,
       email,
       password,
+      role,
     };
 
     axios
