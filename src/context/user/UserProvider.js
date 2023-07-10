@@ -1,9 +1,12 @@
 // UserProvider.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserContext from "./UserContext";
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  // const userLoginData = JSON.parse(localStorage.getItem("userLoginData"));
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("userLoginData"))
+  );
 
   const login = (userData) => {
     // Logic to perform login and set the user state

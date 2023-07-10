@@ -3,15 +3,19 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import UserContext from "context/user/UserContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const { user, login, logout } = useContext(UserContext);
 
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
   }, [user]);
 
   const handleSubmit = (e) => {
@@ -28,7 +32,33 @@ const Login = () => {
         // Handle the response
         console.log(response.data);
         if (response.data.loginData === "success") {
+          localStorage.setItem(
+            "userLoginData",
+            JSON.stringify(response.data.userData)
+          );
           login(response.data.userData);
+          navigate("/");
+          toast.success(`Welcome! ${response.data.userData.username}`, {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        } else {
+          toast.error("Wrong Credentials!", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       })
       .catch((error) => {
@@ -56,7 +86,7 @@ const Login = () => {
                 type="email"
                 id="form3Example3"
                 class="form-control form-control-lg"
-                placeholder="Enter a valid email address"
+                placeholder="Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -68,7 +98,7 @@ const Login = () => {
                 type="password"
                 id="form3Example4"
                 class="form-control form-control-lg"
-                placeholder="Enter password"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

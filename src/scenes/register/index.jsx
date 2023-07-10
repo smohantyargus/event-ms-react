@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +26,17 @@ const Register = () => {
       .then((response) => {
         // Handle the response
         console.log(response.data);
+        navigate("/login");
+        toast.success("User Registered!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       })
       .catch((error) => {
         // Handle the error
@@ -47,7 +62,7 @@ const Register = () => {
               <input
                 type="username"
                 class="form-control form-control-lg"
-                placeholder="Enter your username"
+                placeholder="Enter Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -58,7 +73,7 @@ const Register = () => {
               <input
                 type="email"
                 class="form-control form-control-lg"
-                placeholder="Enter a valid email address"
+                placeholder="Enter Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -69,7 +84,7 @@ const Register = () => {
               <input
                 type="password"
                 class="form-control form-control-lg"
-                placeholder="Enter password"
+                placeholder="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

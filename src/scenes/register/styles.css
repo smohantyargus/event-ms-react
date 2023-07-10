@@ -8,5 +8,6 @@ h2 {
 
 
 .login{
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
+    height: 80vh;
 }
