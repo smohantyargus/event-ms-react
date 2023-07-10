@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./styles.css";
 
 const Event = () => {
   const [event, setEvent] = useState({});
+  const navigate = useNavigate();
   const { id } = useParams();
   useEffect(() => {
     axios
@@ -12,6 +13,21 @@ const Event = () => {
       .then((res) => setEvent(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+
+    axios
+      .delete(`http://localhost:9090/deleteEvent/${id}`)
+      .then((response) => {
+        navigate("/events");
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // Handle the error
+        console.log(error);
+      });
+  };
 
   return (
     <div className="single-event">
@@ -25,6 +41,16 @@ const Event = () => {
         Event Link :- <a href={event.eventLink}>Open Link</a>
       </p>
       {event.eventAddInfo && <p>Additional info : {event.eventAddInfo}</p>}
+      <button
+        className="btn btn-primary"
+        onClick={handleDelete}
+        style={{
+          backgroundColor: "#802f59",
+          borderColor: "#802f59",
+        }}
+      >
+        Delete Post
+      </button>
     </div>
   );
 };
