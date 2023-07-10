@@ -43,18 +43,25 @@ const Event = () => {
         console.log(error);
       });
   };
-  
+
   return (
     <div className="single-event">
       <h1>{event.eventTitle}</h1>
-      <p>{event.eventDescription}</p>
-      <p>Venue : {event.eventLocation}</p>
-      <p>
-        Event Timing :- {event.eventStartTime} - {event.eventEndTime}
-      </p>
-      <p>
-        Event Link :- <a href={event.eventLink}>Open Link</a>
-      </p>
+      <section>
+        <p className="desc-block">
+        <img src= {description} alt="description" className="desc-img"/>
+        <span className="desc">
+          {event.eventDescription}
+        </span>
+        </p>
+          <br></br>
+          <img  className= "address-img" src={address} alt="address"/> {event.eventLocation}
+          <br></br>
+          <img  className= "date-img" src={date} alt="date"/> {event.eventStartTime} - {event.eventEndTime}
+          <br></br>
+          <img  className="link-img" src={link} alt="link"/><a href={event.eventLink}>Open Link</a>
+        
+      </section>
       {event.eventAddInfo && <p>Additional info : {event.eventAddInfo}</p>}
       <button
         className="btn btn-primary"
@@ -69,5 +76,7 @@ const Event = () => {
     </div>
   );
 };
+
+
 
 export default Event;
