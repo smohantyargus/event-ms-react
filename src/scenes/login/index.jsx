@@ -48,6 +48,18 @@ const Login = () => {
             progress: undefined,
             theme: "colored",
           });
+          if (response.data.userData.role === "admin") {
+            toast.info("Admin Login!", {
+              position: "bottom-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          }
         } else {
           toast.error("Wrong Credentials!", {
             position: "bottom-center",
