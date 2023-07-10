@@ -5,7 +5,7 @@ import UserHome from "./UserHome";
 import { toast } from "react-toastify";
 
 const Home = () => {
-  const { user, login, logout } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   if (user.role === "admin") {
     return (
       <div>

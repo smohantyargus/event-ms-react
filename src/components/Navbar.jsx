@@ -7,7 +7,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();
-  const { logout } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
 
   const handleLogout = () => {
     localStorage.removeItem("userLoginData");
@@ -70,6 +70,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+          <button className="btn disabled">Welcome {user.username}</button>
           <button
             style={{ backgroundColor: "#802f59", borderColor: "#802f59" }}
             class="btn btn-primary my-2 my-sm-0"
