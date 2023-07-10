@@ -1,10 +1,29 @@
-import React, { useState } from "react";
+import UserContext from "context/user/UserContext";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();
+  const { logout } = useContext(UserContext);
+
+  const handleLogout = () => {
+    localStorage.removeItem("userLoginData");
+    logout();
+    toast.success("Logged out successfully!", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+    navigate("/login");
+  };
 
   return (
     <div>
@@ -44,12 +63,18 @@ const Navbar = () => {
                 {/* <a class="nav-link" href="/login">
                   Login
                 </a> */}
-                <Link class="nav-link" to="/login">
+                {/* <Link class="nav-link" to="/login">
                   Login
-                </Link>
+                </Link> */}
               </li>
             </ul>
           </div>
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </div>

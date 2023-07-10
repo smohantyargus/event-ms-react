@@ -31,10 +31,24 @@ function App() {
                 </RequireAuth>
               }
             />
-            <Route path="/events" element={<Events />} />
+            <Route
+              path="/events"
+              element={
+                <RequireAuth>
+                  <Events />
+                </RequireAuth>
+              }
+            />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/event/:id" element={<Event />} />
+            <Route
+              path="/event/:id"
+              element={
+                <RequireAuth>
+                  <Event />
+                </RequireAuth>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>
