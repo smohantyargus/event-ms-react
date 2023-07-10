@@ -3,10 +3,14 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import UserContext from "context/user/UserContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const { user, login, logout } = useContext(UserContext);
 
@@ -29,6 +33,28 @@ const Login = () => {
         console.log(response.data);
         if (response.data.loginData === "success") {
           login(response.data.userData);
+          navigate("/");
+          toast.success("Welcome!", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        } else {
+          toast.error("Wrong Credentials!", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       })
       .catch((error) => {
