@@ -35,14 +35,13 @@ const Events = () => {
                 <a href="#" class="ag-courses-item_link">
                   <div class="ag-courses-item_bg"></div>
 
-                  <div class="ag-courses-item_title">
-                    {event.eventTitle}
-                  </div>
+                  <div class="ag-courses-item_title">{event.eventTitle}</div>
 
                   <div class="ag-courses-item_date-box">
                     Start:
-                    <span class="ag-courses-item_date">{event.eventStartTime}</span>
-                    
+                    <span class="ag-courses-item_date">
+                      {event.eventStartTime}
+                    </span>
                   </div>
                 </a>
               </div>
