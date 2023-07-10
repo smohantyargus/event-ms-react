@@ -62,7 +62,7 @@ const Register = () => {
               <input
                 type="username"
                 class="form-control form-control-lg"
-                placeholder="Enter your username"
+                placeholder="Enter Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -73,7 +73,7 @@ const Register = () => {
               <input
                 type="email"
                 class="form-control form-control-lg"
-                placeholder="Enter a valid email address"
+                placeholder="Enter Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -84,7 +84,7 @@ const Register = () => {
               <input
                 type="password"
                 class="form-control form-control-lg"
-                placeholder="Enter password"
+                placeholder="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

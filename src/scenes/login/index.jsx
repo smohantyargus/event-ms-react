@@ -15,7 +15,7 @@ const Login = () => {
   const { user, login, logout } = useContext(UserContext);
 
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
   }, [user]);
 
   const handleSubmit = (e) => {
@@ -32,9 +32,13 @@ const Login = () => {
         // Handle the response
         console.log(response.data);
         if (response.data.loginData === "success") {
+          localStorage.setItem(
+            "userLoginData",
+            JSON.stringify(response.data.userData)
+          );
           login(response.data.userData);
           navigate("/");
-          toast.success("Welcome!", {
+          toast.success(`Welcome! ${response.data.userData.username}`, {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -82,7 +86,7 @@ const Login = () => {
                 type="email"
                 id="form3Example3"
                 class="form-control form-control-lg"
-                placeholder="Enter a valid email address"
+                placeholder="Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -94,7 +98,7 @@ const Login = () => {
                 type="password"
                 id="form3Example4"
                 class="form-control form-control-lg"
-                placeholder="Enter password"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

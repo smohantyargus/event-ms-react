@@ -1,9 +1,9 @@
 import { useLocation, Navigate } from "react-router-dom";
 import UserContext from "context/user/UserContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export function RequireAuth({ children }) {
-  let { user } = useContext(UserContext);
+  let { user, login } = useContext(UserContext);
   let location = useLocation();
 
   if (!user) {
