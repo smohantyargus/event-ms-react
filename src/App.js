@@ -10,6 +10,7 @@ import Events from "./scenes/events";
 import Layout from "scenes/layout";
 import Login from "scenes/login";
 import Register from "scenes/register";
+import Event from "scenes/single-event";
 
 function App() {
   // const mode = useSelector((state) => state.global.mode);
@@ -22,6 +23,7 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/event/:id" element={<Event />} />
           </Route>
         </Routes>
       </BrowserRouter>

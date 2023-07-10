@@ -1,0 +1,35 @@
+ul {
+    list-style: none;
+}
+
+.events-container > h1{
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.event-main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.event-main > li{ 
+    width: 30%;
+}
+
+.event{
+    flex: 0 0 auto;
+    margin: 10px;
+    cursor: pointer;
+    border: 1px grey solid;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.event:hover{
+    transform: scale(1.08);
+    z-index: 5;
+    color: #01295F;
+    border: 1px #218380 solid;
+}

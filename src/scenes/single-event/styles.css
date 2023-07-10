@@ -1,0 +1,14 @@
+.single-event{
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.single-event > p {
+    margin: auto;
+    margin-top: 2rem;
+    font-size: 2rem;
+    background-color: beige;
+    width: 80%;
+    border: 1px solid white;
+    border-radius: 4px;
+}
