@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -54,10 +54,36 @@ const AdminHome = () => {
       });
   };
 
+  const handleEventsClick = () => {
+    navigate("/events");
+  };
+
+  const handleUsersClick = () => {
+    navigate("/users");
+  };
+
   return (
     <div className="admin-home-main-container">
-      <div className="admin-home-main-container-left shadow">
-        <h1>Hello Admin!</h1>
+      <div className="admin-home-main-container-left">
+        <div className="admin-home-welcome shadow mb-4">
+          <h1>Hello Admin!</h1>
+        </div>
+        <div className="admin-home-stats">
+          <div className="admin-home-users shadow mb-4">
+            <h1>Total Users: </h1>
+            <p className="admin-home-users-count">12</p>
+            <button className="btn admin-home-btn" onClick={handleUsersClick}>
+              Show all Users
+            </button>
+          </div>
+          <div className="admin-home-events shadow mb-4">
+            <h1>Total Events: </h1>
+            <p className="admin-home-events-count">12</p>
+            <button className="btn admin-home-btn" onClick={handleEventsClick}>
+              Show all Events
+            </button>
+          </div>
+        </div>
       </div>
       <div className="admin-home-main-container-right shadow">
         <h2>Create an Event</h2>

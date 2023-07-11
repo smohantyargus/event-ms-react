@@ -5,13 +5,49 @@
 }
 
 .admin-home-main-container-left{
+    
+    /* height: 100%; */
+    width: 60vw;
+    
+}
+
+.admin-home-welcome{
     padding: 30px;
     border-radius: 10px;
     background-color: white;
-    height: 100%;
-    width: 50vw;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.admin-home-stats{
+    display: flex;
+}
+
+.admin-home-users, .admin-home-events{
+    padding: 30px;
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.admin-home-btn{
+    background-color: #802f59;
+    border-color: #802f59;
+    color: white;
+    width: 100%;
+}
+
+.admin-home-btn:hover{
+    color: white;
+}
+
+.admin-home-events-count, .admin-home-users-count {
+    font-size: 7rem;
+    font-weight: 700;
+    color: #802f59;
 }
 
 .admin-home-main-container-right{
@@ -31,4 +67,26 @@
 .form-group{
     margin-top: 10px;
     margin-bottom: 5px;
+}
+
+.user-home-main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 80vh;
+}
+
+.user-argusoft-banner{
+    color: #802f59;
+}
+
+.user-head-banner{
+    display: block;
+}
+
+.user-head-welcome{
+    display: block;
 }

@@ -12,11 +12,11 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const { user, login, logout } = useContext(UserContext);
+  const { login } = useContext(UserContext);
 
-  useEffect(() => {
-    // console.log(user);
-  }, [user]);
+  // useEffect(() => {
+  //   // console.log(user);
+  // }, [user]);
 
   const toggle = () => {
    setShowPassword(!showPassword);

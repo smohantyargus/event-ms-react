@@ -32,12 +32,8 @@ const Navbar = () => {
         style={{ backgroundColor: "#f5f5f5" }}
       >
         <div class="container-fluid">
-          {/* <a class="navbar-brand" href="/">
-            Event Management System
-          </a> */}
           <Link class="navbar-brand" to="/">
             <img src="https://apps.argusoft.com/ems/assets/images/logo.png" />
-            {/* Event Management System */}
           </Link>
           <button
             class="navbar-toggler"
@@ -53,21 +49,11 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                {/* <a class="nav-link" href="/events">
-                  Events
-                </a> */}
                 <Link class="nav-link" to="/events">
                   Events
                 </Link>
               </li>
-              <li class="nav-item">
-                {/* <a class="nav-link" href="/login">
-                  Login
-                </a> */}
-                {/* <Link class="nav-link" to="/login">
-                  Login
-                </Link> */}
-              </li>
+              <li class="nav-item"></li>
             </ul>
           </div>
           <button className="btn disabled">Welcome {user.username}</button>

@@ -41,7 +41,7 @@ const Event = () => {
           progress: undefined,
           theme: "colored",
         });
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         // Handle the error
