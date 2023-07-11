@@ -18,8 +18,9 @@ const Login = () => {
   //   // console.log(user);
   // }, [user]);
 
-  const toggle = () => {
-   setShowPassword(!showPassword);
+  const toggle = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = (e) => {
@@ -111,7 +112,7 @@ const Login = () => {
 
             <div class="form-outline mb-3">
               <input
-                type={ showPassword ? 'text' : 'password' }
+                type={showPassword ? "text" : "password"}
                 id="form3Example4"
                 class="form-control form-control-lg"
                 placeholder="Password"
@@ -120,8 +121,7 @@ const Login = () => {
                 required
               />
               <button className="btn mt-2" onClick={toggle}>
-                { showPassword ? 'Hide Password' : 'Show Password'
-                }
+                {showPassword ? "Hide Password" : "Show Password"}
               </button>
             </div>
 
