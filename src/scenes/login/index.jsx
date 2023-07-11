@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const { user, login, logout } = useContext(UserContext);
@@ -17,6 +17,10 @@ const Login = () => {
   useEffect(() => {
     // console.log(user);
   }, [user]);
+
+  const toggle = () => {
+   setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,7 +111,7 @@ const Login = () => {
 
             <div class="form-outline mb-3">
               <input
-                type="password"
+                type={ showPassword ? 'text' : 'password' }
                 id="form3Example4"
                 class="form-control form-control-lg"
                 placeholder="Password"
@@ -115,6 +119,10 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <button className="btn mt-2" onClick={toggle}>
+                { showPassword ? 'Hide Password' : 'Show Password'
+                }
+              </button>
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
