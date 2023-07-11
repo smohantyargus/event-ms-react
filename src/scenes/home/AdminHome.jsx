@@ -63,12 +63,12 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="admin-home-main-container">
-      <div className="admin-home-main-container-left">
+    <div className="admin-home-main-container row">
+      <div className="admin-home-main-container-left col col-10 col-md-6 col-lg-3">
         <div className="admin-home-welcome shadow mb-4">
           <h1>Hello Admin!</h1>
         </div>
-        <div className="admin-home-stats">
+        <div className="admin-home-stats row">
           <div className="admin-home-users shadow mb-4">
             <h1>Total Users: </h1>
             <p className="admin-home-users-count">12</p>
@@ -85,7 +85,7 @@ const AdminHome = () => {
           </div>
         </div>
       </div>
-      <div className="admin-home-main-container-right shadow">
+      <div className="admin-home-main-container-right shadow col col-10 col-md-6 col-lg-3">
         <h2>Create an Event</h2>
         <form>
           <div class="form-group">
