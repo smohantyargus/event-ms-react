@@ -54,7 +54,6 @@ const Users = () => {
           // enableRowSelection={true}
           // getRowCanExpand={true}
         />
-        ;
       </div>
     </div>
   );

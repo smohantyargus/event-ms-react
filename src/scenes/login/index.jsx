@@ -35,7 +35,7 @@ const Login = () => {
       .post("http://localhost:9090/login", data)
       .then((response) => {
         // Handle the response
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.loginData === "success") {
           localStorage.setItem(
             "userLoginData",

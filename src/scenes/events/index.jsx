@@ -29,7 +29,7 @@ const Events = () => {
         <div className="ag-courses_box">
           {events.map((event) => (
             <li key={event.id} onClick={() => handleClick(event)}>
-              <div className="event ag-courses_item">
+              <div className="event ag-courses_item shadow">
                 {/* <h3>{event.eventTitle}</h3>
                 <p>{event.eventDescription.substring(0,25)}</p> */}
                 <a href="#" className="ag-courses-item_link">
@@ -41,13 +41,16 @@ const Events = () => {
 
                   <div className="ag-courses-item_date-box">
                     Start:
-                    <span className="ag-courses-item_date">  {event.eventStartTime}</span>
+                    <span className="ag-courses-item_date">
+                      {" "}
+                      {event.eventStartTime}
+                    </span>
                   </div>
                   <div className="ag-courses-item_date-box">
                     {event.eventLocation}
                   </div>
                   <div className="ag-courses-item_date-box">
-                    {event.eventDate.substring(0,10)}
+                    {event.eventDate.substring(0, 10)}
                   </div>
                 </a>
               </div>
