@@ -12,11 +12,11 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { user, login, logout } = useContext(UserContext);
+  const { login } = useContext(UserContext);
 
-  useEffect(() => {
-    // console.log(user);
-  }, [user]);
+  // useEffect(() => {
+  //   // console.log(user);
+  // }, [user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

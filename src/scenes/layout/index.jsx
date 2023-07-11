@@ -1,3 +1,4 @@
+import Footer from "components/Footer";
 import Navbar from "components/Navbar";
 import UserContext from "context/user/UserContext";
 import React, { useContext } from "react";
@@ -15,17 +16,10 @@ const Layout = () => {
   } else {
     return (
       <div>
-        {/* <Navbar /> */}
         <Outlet />
       </div>
     );
   }
-  // return (
-  //   <div>
-  //     <Navbar />
-  //     <Outlet />
-  //   </div>
-  // );
 };
 
 export default Layout;

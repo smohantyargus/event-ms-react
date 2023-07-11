@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import AdminHome from "./AdminHome";
 import UserHome from "./UserHome";
 import { toast } from "react-toastify";
+import Footer from "components/Footer";
 
 const Home = () => {
   const { user } = useContext(UserContext);
@@ -10,12 +11,14 @@ const Home = () => {
     return (
       <div>
         <AdminHome />
+        <Footer />
       </div>
     );
   } else {
     return (
       <div>
         <UserHome />
+        <Footer />
       </div>
     );
   }
