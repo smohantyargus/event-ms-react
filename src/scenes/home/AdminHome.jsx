@@ -14,6 +14,21 @@ const AdminHome = () => {
   const [eventLink, setEventLink] = useState("");
   const [eventAddInfo, setEventAddInfo] = useState("");
 
+  const [userCount, setUserCount] = useState(0);
+  const [eventCount, setEventCount] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:9090/countusers")
+      .then((res) => setUserCount(res.data))
+      .catch((err) => console.log(err));
+
+    axios
+      .get("http://localhost:9090/countevents")
+      .then((res) => setEventCount(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -71,14 +86,14 @@ const AdminHome = () => {
         <div className="admin-home-stats row">
           <div className="admin-home-users shadow mb-4 col col-2">
             <h1>Total Users: </h1>
-            <p className="admin-home-users-count">12</p>
+            <p className="admin-home-users-count">{userCount}</p>
             <button className="btn admin-home-btn" onClick={handleUsersClick}>
               Show all Users
             </button>
           </div>
           <div className="admin-home-events shadow mb-4 col col-2">
             <h1>Total Events: </h1>
-            <p className="admin-home-events-count">12</p>
+            <p className="admin-home-events-count">{eventCount}</p>
             <button className="btn admin-home-btn" onClick={handleEventsClick}>
               Show all Events
             </button>
