@@ -69,14 +69,14 @@ const AdminHome = () => {
           <h1>Hello Admin!</h1>
         </div>
         <div className="admin-home-stats row">
-          <div className="admin-home-users shadow mb-4">
+          <div className="admin-home-users shadow mb-4 col col-2">
             <h1>Total Users: </h1>
             <p className="admin-home-users-count">12</p>
             <button className="btn admin-home-btn" onClick={handleUsersClick}>
               Show all Users
             </button>
           </div>
-          <div className="admin-home-events shadow mb-4">
+          <div className="admin-home-events shadow mb-4 col col-2">
             <h1>Total Events: </h1>
             <p className="admin-home-events-count">12</p>
             <button className="btn admin-home-btn" onClick={handleEventsClick}>
@@ -87,7 +87,7 @@ const AdminHome = () => {
       </div>
       <div className="admin-home-main-container-right shadow col col-10 col-md-6 col-lg-3">
         <h2>Create an Event</h2>
-        <form>
+        <form className="admin-home-form">
           <div class="form-group">
             <label for="eventName">Event Name</label>
             <input
