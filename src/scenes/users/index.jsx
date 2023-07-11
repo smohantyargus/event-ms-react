@@ -19,7 +19,7 @@ const Users = () => {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "id", //access nested data with dot notation
+        accessorKey: "userId", //access nested data with dot notation
         header: "User ID",
         size: 200,
       },
