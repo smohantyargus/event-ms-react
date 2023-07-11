@@ -6,6 +6,7 @@ import description from "../../icons/pinned-notes.png";
 import address from "../../icons/map.png";
 import date from "../../icons/schedule.png";
 import link from "../../icons/link.png";
+import info from "../../icons/info.png";
 import { toast } from "react-toastify";
 import UserContext from "context/user/UserContext";
 
@@ -57,17 +58,22 @@ const Event = () => {
           <img src={description} alt="description" className="desc-img" />
           <span className="desc">{event.eventDescription}</span>
         </p>
-        <br></br>
+        <p>
         <img className="address-img" src={address} alt="address" />{" "}
         {event.eventLocation}
-        <br></br>
+        </p>
+        <p>
         <img className="date-img" src={date} alt="date" />{" "}
         {event.eventStartTime} - {event.eventEndTime}
         <br></br>
+        </p>
+        <p>
         <img className="link-img" src={link} alt="link" />
         <a href={event.eventLink}>Open Link</a>
+        </p>
+        {event.eventAddInfo && <p><img className = "info-img" src= {info} alt="additional info"/>    {event.eventAddInfo}</p>}
       </section>
-      {event.eventAddInfo && <p>Additional info : {event.eventAddInfo}</p>}
+      
       {adminAuth ? (
         <button
           className="btn btn-primary"
