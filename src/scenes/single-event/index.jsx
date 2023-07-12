@@ -74,6 +74,7 @@ const Event = () => {
   return (
     <>
       <div className="event-container text-center">
+        Event Details
         <div className="event-row-1 row">
           <div className="event-row-1-left event-box shadow col">
             {event.eventDate?.slice(0, 10)}
@@ -109,18 +110,21 @@ const Event = () => {
           </div>
         </div>
         {adminAuth ? (
-          <div className="event-row-2 event-box shadow">
-            <button
-              className="btn btn-primary btn-lg"
-              onClick={handleDelete}
-              style={{
-                backgroundColor: "#802f59",
-                borderColor: "#802f59",
-              }}
-            >
-              Delete Post
-            </button>
-          </div>
+          <>
+            Admin Options
+            <div className="event-row-2 event-box shadow">
+              <button
+                className="btn btn-primary btn-lg"
+                onClick={handleDelete}
+                style={{
+                  backgroundColor: "#802f59",
+                  borderColor: "#802f59",
+                }}
+              >
+                Delete Post
+              </button>
+            </div>
+          </>
         ) : (
           <></>
         )}
