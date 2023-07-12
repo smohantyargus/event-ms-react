@@ -3,6 +3,8 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import logo from "../icons/logo.png";
+
 const Navbar = () => {
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
@@ -33,7 +35,7 @@ const Navbar = () => {
       >
         <div class="container-fluid">
           <Link class="navbar-brand" to="/">
-            <img src="https://apps.argusoft.com/ems/assets/images/logo.png" />
+            <img src={logo} />
           </Link>
           <button
             class="navbar-toggler"
