@@ -46,29 +46,53 @@ const AdminHome = () => {
       eventLink,
       eventAddInfo,
     };
-    console.log(eventData);
+    // console.log(eventData);
 
-    axios
-      .post("http://localhost:9090/addEvent", eventData)
-      .then((response) => {
-        // Handle the response
-        console.log(response.data);
-        navigate(`/event/${response.data.id}`);
-        toast("Event Created!", {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      })
-      .catch((error) => {
-        // Handle the error
-        console.log(error);
+    // console.log(eventStartDate < eventEndDate);
+
+    if (
+      eventTitle === "" ||
+      eventLocation === "" ||
+      eventStartDate === "" ||
+      eventEndDate === "" ||
+      eventStartTime === "" ||
+      eventEndTime === "" ||
+      eventDescription === "" ||
+      eventAddInfo === ""
+    ) {
+      toast.warning("Enter All Fields Correctly!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
       });
+    } else {
+      axios
+        .post("http://localhost:9090/addEvent", eventData)
+        .then((response) => {
+          // Handle the response
+          // console.log(response.data);
+          navigate(`/event/${response.data.id}`);
+          toast("Event Created!", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        })
+        .catch((error) => {
+          // Handle the error
+          console.log(error);
+        });
+    }
   };
 
   const handleEventsClick = () => {
@@ -106,68 +130,74 @@ const AdminHome = () => {
         <h2>Create an Event</h2>
         <form className="admin-home-form">
           <div class="form-group">
-            <label for="eventName">Event Name</label>
+            <label for="eventName">Event Name *</label>
             <input
               class="form-control form-control-lg"
               type="text"
               placeholder="Event Name"
               id="eventName"
               onChange={(e) => setEventTitle(e.target.value)}
+              required
             />
           </div>
           <div class="form-group">
-            <label for="eventLocation">Event Location</label>
+            <label for="eventLocation">Event Location *</label>
             <input
               class="form-control form-control-lg"
               type="text"
               placeholder="Event Location"
               id="eventLocation"
               onChange={(e) => setEventLocation(e.target.value)}
+              required
             />
           </div>
           <div class="form-group">
-            <label for="eventStartDate">Event Start Date</label>
+            <label for="eventStartDate">Event Start Date *</label>
             <input
               class="form-control form-control-lg"
               type="date"
               placeholder="Event Start Date"
               id="eventStartDate"
               onChange={(e) => setEventStartDate(e.target.value)}
+              required
             />
           </div>
           <div class="form-group">
-            <label for="eventEndDate">Event End Date</label>
+            <label for="eventEndDate">Event End Date *</label>
             <input
               class="form-control form-control-lg"
               type="date"
               placeholder="Event End Date"
               id="eventEndDate"
               onChange={(e) => setEventEndDate(e.target.value)}
+              required
             />
           </div>
           <div class="form-group">
-            <label for="eventstartTime">Event Start Time</label>
+            <label for="eventstartTime">Event Start Time *</label>
             <input
               class="form-control form-control-lg"
               type="time"
               placeholder="Event Start Time"
               id="eventstartTime"
               onChange={(e) => setEventStartTime(e.target.value)}
+              required
             />
           </div>
           <div class="form-group">
-            <label for="eventStartTime">Event End Time</label>
+            <label for="eventStartTime">Event End Time *</label>
             <input
               class="form-control form-control-lg"
               type="time"
               placeholder="Event End Time"
               id="eventEndTime"
               onChange={(e) => setEventEndTime(e.target.value)}
+              required
             />
           </div>
           <div class="form-group">
-            <label for="eventDescription">Event Description</label>
-            <input
+            <label for="eventDescription">Event Description *</label>
+            <textarea
               class="form-control form-control-lg"
               type="text"
               placeholder="Event Description"
@@ -176,7 +206,7 @@ const AdminHome = () => {
             />
           </div>
           <div class="form-group">
-            <label for="eventLink">Event Link</label>
+            <label for="eventLink">Event Link (optional)</label>
             <input
               class="form-control form-control-lg"
               type="text"
@@ -203,6 +233,7 @@ const AdminHome = () => {
               backgroundColor: "#802f59",
               borderColor: "#802f59",
             }}
+            type="submit"
             class="btn btn-primary"
             onClick={handleSubmit}
           >

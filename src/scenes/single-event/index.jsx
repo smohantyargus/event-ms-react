@@ -85,18 +85,18 @@ const Event = () => {
             {event.eventEndDate?.slice(0, 10)}
           </div>
           <div className="event-row-1-middle event-box shadow col">
-            {event.eventTitle}
+            {event?.eventTitle}
           </div>
           <div className="event-row-1-right event-box shadow col">
-            {event.eventStartTime} - {event.eventEndTime}
+            {event?.eventStartTime} - {event?.eventEndTime}
           </div>
         </div>
         <div className="event-row-2 event-box shadow event-desc">
-          {event.eventDescription}
+          {event?.eventDescription}
         </div>
         <div className="event-row-3 row">
           <div className="event-row-3-left event-box shadow col ">
-            {event.eventLocation}
+            {event?.eventLocation}
           </div>
           <div className="event-row-3-middle event-box shadow col">
             <button
@@ -112,7 +112,7 @@ const Event = () => {
             </button>
           </div>
           <div className="event-row-3-right event-box shadow col">
-            {event.eventAddInfo}
+            {event?.eventAddInfo}
           </div>
         </div>
         {adminAuth ? (
