@@ -71,6 +71,16 @@
     justify-content: center;
 }
 
+.event-admin{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }

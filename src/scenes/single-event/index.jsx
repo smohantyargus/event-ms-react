@@ -22,13 +22,10 @@ const Event = () => {
     axios
       .get(`http://localhost:9090/event/${id}`)
       .then((res) => {
-        if(res.data.attendees.includes(user.userId))
-          setInterested(true);
-        setEvent(res.data)
+        if (res.data.attendees.includes(user.userId)) setInterested(true);
+        setEvent(res.data);
       })
       .catch((err) => console.log(err));
-
-        
   }, []);
 
   const handleDelete = (e) => {
@@ -77,14 +74,15 @@ const Event = () => {
       })
       .catch((err) => console.log(err));
   };
-<a href="#" className="ag-courses-item_link"></a>
+  <a href="#" className="ag-courses-item_link"></a>;
   return (
     <>
       <div className="event-container text-center">
         Event Details
         <div className="event-row-1 row">
           <div className="event-row-1-left event-box shadow col">
-            {event.eventStartDate?.slice(0, 10)} - {event.eventEndDate?.slice(0, 10)}
+            {event.eventStartDate?.slice(0, 10)} -{" "}
+            {event.eventEndDate?.slice(0, 10)}
           </div>
           <div className="event-row-1-middle event-box shadow col">
             {event.eventTitle}
@@ -108,9 +106,9 @@ const Event = () => {
                 backgroundColor: "#802f59",
                 borderColor: "#802f59",
               }}
-              disabled = {isInterested}
+              disabled={isInterested}
             >
-              { !isInterested ? "I'm Interested" : "Registered"}
+              {!isInterested ? "I'm Interested" : "Registered"}
             </button>
           </div>
           <div className="event-row-3-right event-box shadow col">
@@ -120,7 +118,7 @@ const Event = () => {
         {adminAuth ? (
           <>
             Admin Options
-            <div className="event-row-2 event-box shadow">
+            <div className="event-admin shadow">
               <button
                 className="btn btn-primary btn-lg"
                 onClick={handleDelete}
@@ -131,6 +129,7 @@ const Event = () => {
               >
                 Delete Post
               </button>
+              <div>Number of attendees: {event.attendees?.length}</div>
             </div>
           </>
         ) : (
