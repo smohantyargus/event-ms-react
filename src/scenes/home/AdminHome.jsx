@@ -7,7 +7,8 @@ import { toast } from "react-toastify";
 const AdminHome = () => {
   const [eventTitle, setEventTitle] = useState("");
   const [eventLocation, setEventLocation] = useState("");
-  const [eventDate, setEventDate] = useState("");
+  const [eventStartDate, setEventStartDate] = useState("");
+  const [eventEndDate, setEventEndDate] = useState("");
   const [eventStartTime, setEventStartTime] = useState("");
   const [eventEndTime, setEventEndTime] = useState("");
   const [eventDescription, setEventDescription] = useState("");
@@ -37,7 +38,8 @@ const AdminHome = () => {
     const eventData = {
       eventTitle,
       eventLocation,
-      eventDate,
+      eventStartDate,
+      eventEndDate,
       eventStartTime,
       eventEndTime,
       eventDescription,
@@ -124,13 +126,23 @@ const AdminHome = () => {
             />
           </div>
           <div class="form-group">
-            <label for="eventDate">Event Date</label>
+            <label for="eventStartDate">Event Start Date</label>
             <input
               class="form-control form-control-lg"
               type="date"
-              placeholder="Event Date"
-              id="eventDate"
-              onChange={(e) => setEventDate(e.target.value)}
+              placeholder="Event Start Date"
+              id="eventStartDate"
+              onChange={(e) => setEventStartDate(e.target.value)}
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventEndDate">Event End Date</label>
+            <input
+              class="form-control form-control-lg"
+              type="date"
+              placeholder="Event End Date"
+              id="eventEndDate"
+              onChange={(e) => setEventEndDate(e.target.value)}
             />
           </div>
           <div class="form-group">
