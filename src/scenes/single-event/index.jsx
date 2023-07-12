@@ -77,14 +77,14 @@ const Event = () => {
       })
       .catch((err) => console.log(err));
   };
-
+<a href="#" className="ag-courses-item_link"></a>
   return (
     <>
       <div className="event-container text-center">
         Event Details
         <div className="event-row-1 row">
           <div className="event-row-1-left event-box shadow col">
-            {event.eventDate?.slice(0, 10)}
+            {event.eventStartDate?.slice(0, 10)} - {event.eventEndDate?.slice(0, 10)}
           </div>
           <div className="event-row-1-middle event-box shadow col">
             {event.eventTitle}

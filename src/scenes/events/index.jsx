@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles.css";
-import Event from "scenes/single-event";
+// import Event from "scenes/single-event";
 import { useNavigate } from "react-router-dom";
 
 const Events = () => {
