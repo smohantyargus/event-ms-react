@@ -14,15 +14,21 @@ const Event = () => {
   const [event, setEvent] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
-
+  const [isInterested, setInterested] = useState(false);
   const { user } = useContext(UserContext);
   const adminAuth = user.role === "admin";
 
   useEffect(() => {
     axios
       .get(`http://localhost:9090/event/${id}`)
-      .then((res) => setEvent(res.data))
+      .then((res) => {
+        if(res.data.attendees.includes(user.userId))
+          setInterested(true);
+        setEvent(res.data)
+      })
       .catch((err) => console.log(err));
+
+        
   }, []);
 
   const handleDelete = (e) => {
@@ -57,6 +63,7 @@ const Event = () => {
     axios
       .get(`http://localhost:9090/attend/${eventId}/${userId}`)
       .then((res) => {
+        setInterested(true);
         toast.success(`Thank you for registering!`, {
           position: "bottom-center",
           autoClose: 5000,
@@ -101,8 +108,9 @@ const Event = () => {
                 backgroundColor: "#802f59",
                 borderColor: "#802f59",
               }}
+              disabled = {isInterested}
             >
-              I'm Interested
+              { !isInterested ? "I'm Interested" : "Registered"}
             </button>
           </div>
           <div className="event-row-3-right event-box shadow col">

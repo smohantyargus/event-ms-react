@@ -50,7 +50,7 @@ const Events = () => {
                     {event.eventLocation}
                   </div>
                   <div className="ag-courses-item_date-box">
-                    {event.eventDate.substring(0, 10)}
+                    {event.eventStartDate.substring(0, 10)}
                   </div>
                 </a>
               </div>
