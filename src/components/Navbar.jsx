@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import logo from "../icons/logo.png";
+import SearchBar from "scenes/search-bar";
+import axios from "axios";
 
 const Navbar = () => {
   const { pathname } = useLocation();

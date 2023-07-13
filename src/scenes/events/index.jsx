@@ -3,6 +3,7 @@ import axios from "axios";
 import "./styles.css";
 // import Event from "scenes/single-event";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "scenes/search-bar";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -13,6 +14,18 @@ const Events = () => {
       .then((res) => setEvents(res.data))
       .catch((err) => console.log(err));
   };
+
+  const handleSearch = (searchTerm) => {
+    if(searchTerm ==="")
+      getAllEvents();
+      
+    else
+     axios
+      .get(`http://localhost:9090/event/search/${searchTerm}`)
+      .then((res) => setEvents(res.data))
+      .catch((err) => console.log(err));
+    
+   }; 
 
   const handleClick = (event) => {
     navigate(`/event/${event.id}`);
@@ -25,6 +38,7 @@ const Events = () => {
   return (
     <div className="events-container">
       <h1>Events</h1>
+      <SearchBar onSearch={handleSearch} />
       <ul className="event-main ag-format-container">
         <div className="ag-courses_box">
           {events.map((event) => (
