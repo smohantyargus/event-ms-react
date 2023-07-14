@@ -38,11 +38,8 @@ const Login = () => {
         // Handle the response
         // console.log(response.data);
         if (response.data.token != null) {
-          localStorage.setItem(
-            "user",
-            JSON.stringify(response.data)
-          );
-          localStorage.setItem('token',response.data.token);
+          localStorage.setItem("user", JSON.stringify(response.data));
+          localStorage.setItem("token", response.data.token);
           login(response.data);
           navigate("/");
           toast.success(`Welcome! ${response.data.firstName}`, {
@@ -82,6 +79,16 @@ const Login = () => {
       })
       .catch((error) => {
         // Handle the error
+        toast.error("Wrong Credentials!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         console.log(error);
       });
   };
