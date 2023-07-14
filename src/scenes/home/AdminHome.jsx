@@ -3,6 +3,8 @@ import "./styles.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import api from "api";
+import { appBarClasses } from "@mui/material";
 
 const AdminHome = () => {
   const [eventTitle, setEventTitle] = useState("");
@@ -19,12 +21,12 @@ const AdminHome = () => {
   const [eventCount, setEventCount] = useState(0);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:9090/countusers")
+    api
+      .get("/countusers")
       .then((res) => setUserCount(res.data))
       .catch((err) => console.log(err));
 
-    axios
+    api
       .get("http://localhost:9090/countevents")
       .then((res) => setEventCount(res.data))
       .catch((err) => console.log(err));

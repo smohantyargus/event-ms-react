@@ -5,7 +5,7 @@ import UserContext from "./UserContext";
 const UserProvider = ({ children }) => {
   // const userLoginData = JSON.parse(localStorage.getItem("userLoginData"));
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("userLoginData"))
+    JSON?.parse(localStorage.getItem("user"))
   );
 
   const login = (userData) => {

@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import api from "api";
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
-  const role = "";
+  const role = "USER";
 
   const navigate = useNavigate();
 
@@ -17,17 +20,20 @@ const Register = () => {
     e.preventDefault();
 
     let data = {
-      username,
+      firstName,
+      lastName,
+      // username,
       email,
       password,
       role,
     };
 
-    axios
-      .post("http://localhost:9090/register", data)
+    api
+      .post("/auth/signup", data)
       .then((response) => {
         // Handle the response
         console.log(response.data);
+        localStorage.setItem('token',response.data.token);
         navigate("/login");
         toast.success("User Registered!", {
           position: "bottom-center",
@@ -60,7 +66,7 @@ const Register = () => {
           <form onSubmit={handleSubmit}>
             <h2>Event Management System</h2>
             <h3> Register</h3>
-            <div class="form-outline mb-4">
+            {/* <div class="form-outline mb-4">
               <input
                 type="username"
                 class="form-control form-control-lg"
@@ -69,8 +75,27 @@ const Register = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
+            </div> */}
+            <div class="form-outline mb-4">
+              <input
+                type="firstname"
+                class="form-control form-control-lg"
+                placeholder="Enter First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
             </div>
-
+            <div class="form-outline mb-4">
+              <input
+                type="lastname"
+                class="form-control form-control-lg"
+                placeholder="Enter Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </div>
             <div class="form-outline mb-4">
               <input
                 type="email"

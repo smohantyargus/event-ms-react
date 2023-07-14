@@ -9,6 +9,7 @@ import "./styles.css";
 // import info from "../../icons/info.png";
 import { toast } from "react-toastify";
 import UserContext from "context/user/UserContext";
+import api from "api";
 
 const Event = () => {
   const [event, setEvent] = useState({});
@@ -16,11 +17,11 @@ const Event = () => {
   const { id } = useParams();
   const [isInterested, setInterested] = useState(false);
   const { user } = useContext(UserContext);
-  const adminAuth = user.role === "admin";
+  const adminAuth = user.role === "ADMIN";
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:9090/event/${id}`)
+    api
+      .get(`/event/${id}`)
       .then((res) => {
         if (res.data.attendees.includes(user.userId)) setInterested(true);
         setEvent(res.data);
@@ -31,8 +32,8 @@ const Event = () => {
   const handleDelete = (e) => {
     e.preventDefault();
 
-    axios
-      .delete(`http://localhost:9090/deleteEvent/${id}`)
+    api
+      .delete(`/deleteEvent/${id}`)
       .then((response) => {
         navigate("/events");
         toast.warning("Event Deleted!", {
@@ -57,8 +58,8 @@ const Event = () => {
     e.preventDefault();
     const eventId = id;
     const userId = user.userId;
-    axios
-      .get(`http://localhost:9090/attend/${eventId}/${userId}`)
+    api
+      .get(`/attend/${eventId}/${userId}`)
       .then((res) => {
         setInterested(true);
         toast.success(`Thank you for registering!`, {

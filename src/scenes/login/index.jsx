@@ -5,6 +5,7 @@ import axios from "axios";
 import UserContext from "context/user/UserContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import api from "api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -31,19 +32,20 @@ const Login = () => {
       password,
     };
 
-    axios
-      .post("http://localhost:9090/login", data)
+    api
+      .post("/auth/signin", data)
       .then((response) => {
         // Handle the response
         // console.log(response.data);
-        if (response.data.loginData === "success") {
+        if (response.data.token != null) {
           localStorage.setItem(
-            "userLoginData",
-            JSON.stringify(response.data.userData)
+            "user",
+            JSON.stringify(response.data)
           );
-          login(response.data.userData);
+          localStorage.setItem('token',response.data.token);
+          login(response.data);
           navigate("/");
-          toast.success(`Welcome! ${response.data.userData.username}`, {
+          toast.success(`Welcome! ${response.data.firstName}`, {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -53,7 +55,7 @@ const Login = () => {
             progress: undefined,
             theme: "colored",
           });
-          if (response.data.userData.role === "admin") {
+          if (response.data.role === "ADMIN") {
             toast.info("Admin Login!", {
               position: "bottom-center",
               autoClose: 5000,

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./styles.css";
 // import Event from "scenes/single-event";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "scenes/search-bar";
+import api from "api";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
   const getAllEvents = () => {
-    axios
-      .get("http://localhost:9090/getEvents")
+    api
+      .get("/getEvents")
       .then((res) => setEvents(res.data))
       .catch((err) => console.log(err));
   };
@@ -20,8 +21,8 @@ const Events = () => {
       getAllEvents();
       
     else
-     axios
-      .get(`http://localhost:9090/event/search/${searchTerm}`)
+     api
+      .get(`/event/search/${searchTerm}`)
       .then((res) => setEvents(res.data))
       .catch((err) => console.log(err));
     

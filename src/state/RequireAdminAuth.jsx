@@ -7,7 +7,7 @@ export function RequireAdminAuth({ children }) {
   let { user, login } = useContext(UserContext);
   let location = useLocation();
 
-  if (user.role !== "admin") {
+  if (user.role !== "ADMIN") {
     toast.warning("Access Denied!", {
       position: "bottom-center",
       autoClose: 5000,

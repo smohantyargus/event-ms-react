@@ -7,7 +7,7 @@ import Footer from "components/Footer";
 
 const Home = () => {
   const { user } = useContext(UserContext);
-  if (user.role === "admin") {
+  if (user.role === "ADMIN") {
     return (
       <div>
         <AdminHome />
