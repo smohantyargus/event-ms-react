@@ -22,12 +22,12 @@ const AdminHome = () => {
 
   useEffect(() => {
     api
-      .get("/countusers")
+      .get("/user/countusers")
       .then((res) => setUserCount(res.data))
       .catch((err) => console.log(err));
 
     api
-      .get("http://localhost:9090/countevents")
+      .get("/event/countevents")
       .then((res) => setEventCount(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -73,8 +73,8 @@ const AdminHome = () => {
         theme: "colored",
       });
     } else {
-      axios
-        .post("http://localhost:9090/addEvent", eventData)
+      api
+        .post("/event/add", eventData)
         .then((response) => {
           // Handle the response
           // console.log(response.data);
