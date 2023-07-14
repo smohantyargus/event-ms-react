@@ -7,15 +7,15 @@ import api from "api";
 import { appBarClasses } from "@mui/material";
 
 const AdminHome = () => {
-  const [eventTitle, setEventTitle] = useState("");
-  const [eventLocation, setEventLocation] = useState("");
-  const [eventStartDate, setEventStartDate] = useState("");
-  const [eventEndDate, setEventEndDate] = useState("");
-  const [eventStartTime, setEventStartTime] = useState("");
-  const [eventEndTime, setEventEndTime] = useState("");
-  const [eventDescription, setEventDescription] = useState("");
+  const [title, setEventTitle] = useState("");
+  const [location, setEventLocation] = useState("");
+  const [startDate, setEventStartDate] = useState("");
+  const [endDate, setEventEndDate] = useState("");
+  const [startTime, setEventStartTime] = useState("");
+  const [endTime, setEventEndTime] = useState("");
+  const [description, setEventDescription] = useState("");
   const [eventLink, setEventLink] = useState("");
-  const [eventAddInfo, setEventAddInfo] = useState("");
+  const [addInfo, setEventAddInfo] = useState("");
 
   const [userCount, setUserCount] = useState(0);
   const [eventCount, setEventCount] = useState(0);
@@ -38,29 +38,29 @@ const AdminHome = () => {
     e.preventDefault();
 
     const eventData = {
-      eventTitle,
-      eventLocation,
-      eventStartDate,
-      eventEndDate,
-      eventStartTime,
-      eventEndTime,
-      eventDescription,
+      title,
+      location,
+      startDate,
+      endDate,
+      startTime,
+      endTime,
+      description,
       eventLink,
-      eventAddInfo,
+      addInfo,
     };
     // console.log(eventData);
 
     // console.log(eventStartDate < eventEndDate);
 
     if (
-      eventTitle === "" ||
-      eventLocation === "" ||
-      eventStartDate === "" ||
-      eventEndDate === "" ||
-      eventStartTime === "" ||
-      eventEndTime === "" ||
-      eventDescription === "" ||
-      eventAddInfo === ""
+      title === "" ||
+      location === "" ||
+      startDate === "" ||
+      endDate === "" ||
+      startTime === "" ||
+      endTime === "" ||
+      description === "" ||
+      addInfo === ""
     ) {
       toast.warning("Enter All Fields Correctly!", {
         position: "bottom-center",
