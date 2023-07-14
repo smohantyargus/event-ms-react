@@ -56,10 +56,11 @@ const Event = () => {
 
   const handleInterested = (e) => {
     e.preventDefault();
+    console.log(user);
     const eventId = id;
     const userId = user.id;
     api
-      .get(`/attend/${eventId}/${userId}`)
+      .get(`/event/attend/${eventId}/${userId}`)
       .then((res) => {
         setInterested(true);
         toast.success(`Thank you for registering!`, {
@@ -127,7 +128,7 @@ const Event = () => {
                   borderColor: "#802f59",
                 }}
               >
-                Delete Post
+                Delete Event
               </button>
               <div>Number of attendees: {event.attendees?.length}</div>
             </div>

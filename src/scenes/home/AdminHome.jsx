@@ -207,7 +207,7 @@ const AdminHome = () => {
               onChange={(e) => setEventDescription(e.target.value)}
             />
           </div>
-          <div class="form-group">
+          {/* <div class="form-group">
             <label for="eventLink">Event Link (optional)</label>
             <input
               class="form-control form-control-lg"
@@ -216,9 +216,9 @@ const AdminHome = () => {
               id="eventLink"
               onChange={(e) => setEventLink(e.target.value)}
             />
-          </div>
+          </div> */}
           <div class="form-group">
-            <label for="eventAddInfo">Event Additional Info</label>
+            <label for="eventAddInfo">Event Additional Info *</label>
             <input
               class="form-control form-control-lg"
               type="text"

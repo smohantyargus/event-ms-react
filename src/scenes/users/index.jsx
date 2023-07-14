@@ -3,13 +3,14 @@ import { MaterialReactTable } from "material-react-table";
 
 import "./styles.css";
 import axios from "axios";
+import api from "api";
 
 const Users = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:9090/getUsers")
+    api
+      .get("user/all")
       .then((res) => setUserData(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -19,13 +20,18 @@ const Users = () => {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "userId", //access nested data with dot notation
+        accessorKey: "id", //access nested data with dot notation
         header: "User ID",
         size: 200,
       },
       {
-        accessorKey: "username",
-        header: "Username",
+        accessorKey: "firstName",
+        header: "First Name",
+        size: 150,
+      },
+      {
+        accessorKey: "lastName",
+        header: "Last Name",
         size: 150,
       },
       {
@@ -34,9 +40,9 @@ const Users = () => {
         size: 20,
       },
       {
-        accessorKey: "email",
-        header: "Email",
-        size: 200,
+        accessorKey: "username",
+        header: "Username",
+        size: 150,
       },
     ],
     []
