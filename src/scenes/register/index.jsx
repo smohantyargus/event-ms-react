@@ -12,7 +12,14 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const role = "USER";
+
+  const toggle = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
 
   const navigate = useNavigate();
 
@@ -109,13 +116,16 @@ const Register = () => {
 
             <div class="form-outline mb-3">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 class="form-control form-control-lg"
                 placeholder="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <button className="btn mt-2" onClick={toggle}>
+                {showPassword ? "Hide Password" : "Show Password"}
+              </button>
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
