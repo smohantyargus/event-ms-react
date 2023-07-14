@@ -23,7 +23,7 @@ const Event = () => {
     api
       .get(`/event/${id}`)
       .then((res) => {
-        if (res.data.attendees.includes(user.userId)) setInterested(true);
+        if (res.data.attendees.includes(user.id)) setInterested(true);
         setEvent(res.data);
       })
       .catch((err) => console.log(err));
@@ -33,7 +33,7 @@ const Event = () => {
     e.preventDefault();
 
     api
-      .delete(`/deleteEvent/${id}`)
+      .delete(`/event/delete/${id}`)
       .then((response) => {
         navigate("/events");
         toast.warning("Event Deleted!", {
@@ -57,7 +57,7 @@ const Event = () => {
   const handleInterested = (e) => {
     e.preventDefault();
     const eventId = id;
-    const userId = user.userId;
+    const userId = user.id;
     api
       .get(`/attend/${eventId}/${userId}`)
       .then((res) => {
@@ -82,22 +82,21 @@ const Event = () => {
         Event Details
         <div className="event-row-1 row">
           <div className="event-row-1-left event-box shadow col">
-            {event.eventStartDate?.slice(0, 10)} -{" "}
-            {event.eventEndDate?.slice(0, 10)}
+            {event.startDate?.slice(0, 10)} - {event.endDate?.slice(0, 10)}
           </div>
           <div className="event-row-1-middle event-box shadow col">
-            {event?.eventTitle}
+            {event?.title}
           </div>
           <div className="event-row-1-right event-box shadow col">
-            {event?.eventStartTime} - {event?.eventEndTime}
+            {event?.startTime} - {event?.endTime}
           </div>
         </div>
         <div className="event-row-2 event-box shadow event-desc">
-          {event?.eventDescription}
+          {event?.description}
         </div>
         <div className="event-row-3 row">
           <div className="event-row-3-left event-box shadow col ">
-            {event?.eventLocation}
+            {event?.location}
           </div>
           <div className="event-row-3-middle event-box shadow col">
             <button
@@ -113,7 +112,7 @@ const Event = () => {
             </button>
           </div>
           <div className="event-row-3-right event-box shadow col">
-            {event?.eventAddInfo}
+            {event?.addInfo}
           </div>
         </div>
         {adminAuth ? (

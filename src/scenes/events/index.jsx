@@ -11,22 +11,19 @@ const Events = () => {
   const navigate = useNavigate();
   const getAllEvents = () => {
     api
-      .get("/getEvents")
+      .get("/event/all")
       .then((res) => setEvents(res.data))
       .catch((err) => console.log(err));
   };
 
   const handleSearch = (searchTerm) => {
-    if(searchTerm ==="")
-      getAllEvents();
-      
+    if (searchTerm === "") getAllEvents();
     else
-     api
-      .get(`/event/search/${searchTerm}`)
-      .then((res) => setEvents(res.data))
-      .catch((err) => console.log(err));
-    
-   }; 
+      api
+        .get(`/event/search/${searchTerm}`)
+        .then((res) => setEvents(res.data))
+        .catch((err) => console.log(err));
+  };
 
   const handleClick = (event) => {
     navigate(`/event/${event.id}`);
@@ -42,30 +39,28 @@ const Events = () => {
       <SearchBar onSearch={handleSearch} />
       <ul className="event-main ag-format-container">
         <div className="ag-courses_box">
-          {events.map((event) => (
-            <li key={event.id} onClick={() => handleClick(event)}>
+          {events?.map((event) => (
+            <li key={event?.id} onClick={() => handleClick(event)}>
               <div className="event ag-courses_item shadow">
                 {/* <h3>{event.eventTitle}</h3>
                 <p>{event.eventDescription.substring(0,25)}</p> */}
                 <a href="#" className="ag-courses-item_link">
                   <div className="ag-courses-item_bg"></div>
 
-                  <div className="ag-courses-item_title">
-                    {event.eventTitle}
-                  </div>
+                  <div className="ag-courses-item_title">{event?.title}</div>
 
                   <div className="ag-courses-item_date-box">
                     Start:
                     <span className="ag-courses-item_date">
                       {" "}
-                      {event.eventStartTime}
+                      {event?.startTime}
                     </span>
                   </div>
                   <div className="ag-courses-item_date-box">
-                    {event.eventLocation}
+                    {event?.location}
                   </div>
                   <div className="ag-courses-item_date-box">
-                    {event.eventStartDate.substring(0, 10)}
+                    {event?.startDate?.substring(0, 10)}
                   </div>
                 </a>
               </div>
