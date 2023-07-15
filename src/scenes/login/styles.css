@@ -1,13 +1,48 @@
 h2, h3 {
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
 }
 
 h2 {
-    font-weight: bolder;
+    /* font-weight: bolder; */
 }
 
 
 .login{
     /* margin-top: 5rem; */
-    height: 80vh;
+    /* height: 80vh; */
+    height: 100;
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-top: 30px;
+    padding-bottom: 30px; */
+    padding: 30px;
+}
+
+.input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-header{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.arg-logo{
+    height: 36px;
+    width: 130px;
+    /* margin-top: 40px; */
 }
