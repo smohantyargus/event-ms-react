@@ -48,14 +48,16 @@ const Users = () => {
 
   const handleDeleteRow = useCallback(
     (row) => {
-      if(window.confirm(`Do you want to delete ${row.getValue("firstName")}`)){
-      //send api delete request here, then refetch or update local table data for re-render
-      api
-        .delete(`/user/delete/${row.getValue("id")}`)
-        .then((res) => console.log(res));
-      userData.splice(row.index, 1);
-      setUserData([...userData]);
-      } 
+      if (
+        window.confirm(`Do you want to delete ${row.getValue("firstName")}`)
+      ) {
+        //send api delete request here, then refetch or update local table data for re-render
+        api
+          .delete(`/user/delete/${row.getValue("id")}`)
+          .then((res) => console.log(res));
+        userData.splice(row.index, 1);
+        setUserData([...userData]);
+      }
     },
     [userData]
   );
@@ -92,7 +94,7 @@ const Users = () => {
         size: 20,
       },
       {
-        accessorKey: "username",
+        accessorKey: "email",
         header: "Email",
         size: 150,
       },
