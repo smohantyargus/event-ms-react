@@ -49,7 +49,7 @@ const Users = () => {
       userData[row.index] = values;
       //send/receive api updates here, then refetch or update local table data for re-render
       api.put("/user/update", values).then((res) => {
-        toast.warning("User Updated!", {
+        toast.info("User Updated!", {
           position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -77,7 +77,7 @@ const Users = () => {
       ) {
         //send api delete request here, then refetch or update local table data for re-render
         api.delete(`/user/delete/${row.getValue("id")}`).then((res) => {
-          toast.warning("User Deleted!", {
+          toast.error("User Deleted!", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
