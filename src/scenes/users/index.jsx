@@ -114,6 +114,7 @@ const Users = () => {
           columns={columns}
           data={userData}
           enableHiding={false}
+          initialState={{ columnVisibility: { password: false } }}
           enableClickToCopy={true}
           enableRowNumbers={true}
           // enableRowSelection={true}
