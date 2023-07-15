@@ -5,7 +5,7 @@ import "./styles.css";
 import axios from "axios";
 import api from "api";
 import { toast } from "react-toastify";
-import { Delete, Edit } from '@mui/icons-material';
+import { Delete, Edit } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -16,11 +16,10 @@ import {
   IconButton,
   Stack,
   TextField,
-  Tooltip
-} from '@mui/material';
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
-
+  Tooltip,
+} from "@mui/material";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const Users = () => {
   const [userData, setUserData] = useState([]);
@@ -29,9 +28,7 @@ const Users = () => {
 
   const handleCreateNewRow = (values) => {
     userData.push(values);
-    api
-      .post("/user/create", values)
-      .then((res) => console.log(res));
+    api.post("/user/create", values).then((res) => console.log(res));
     setUserData([...userData]);
   };
 
@@ -39,9 +36,7 @@ const Users = () => {
     if (!Object.keys(validationErrors).length) {
       userData[row.index] = values;
       //send/receive api updates here, then refetch or update local table data for re-render
-      api
-        .put("/user/update", values)
-        .then((res) => console.log(res))
+      api.put("/user/update", values).then((res) => console.log(res));
       setUserData([...userData]);
       exitEditingMode(); //required to exit editing mode and close modal
     }
@@ -53,14 +48,16 @@ const Users = () => {
 
   const handleDeleteRow = useCallback(
     (row) => {
+      if(window.confirm(`Do you want to delete ${row.getValue("firstName")}`)){
       //send api delete request here, then refetch or update local table data for re-render
       api
         .delete(`/user/delete/${row.getValue("id")}`)
         .then((res) => console.log(res));
       userData.splice(row.index, 1);
       setUserData([...userData]);
+      } 
     },
-    [userData],
+    [userData]
   );
 
   useEffect(() => {
@@ -117,9 +114,9 @@ const Users = () => {
           editingMode="modal"
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
-          onEditingRowCancel={handleCancelRowEdits} 
+          onEditingRowCancel={handleCancelRowEdits}
           renderRowActions={({ row, table }) => (
-            <Box sx={{ display: 'flex', gap: '1rem' }}>
+            <Box sx={{ display: "flex", gap: "1rem" }}>
               <Tooltip arrow placement="left" title="Edit">
                 <IconButton onClick={() => table.setEditingRow(row)}>
                   <Edit />
@@ -157,9 +154,9 @@ export default Users;
 export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
   const [values, setValues] = useState(() =>
     columns.reduce((acc, column) => {
-      acc[column.accessorKey ?? ''] = '';
+      acc[column.accessorKey ?? ""] = "";
       return acc;
-    }, {}),
+    }, {})
   );
 
   const handleSubmit = () => {
@@ -175,25 +172,28 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
         <form onSubmit={(e) => e.preventDefault()}>
           <Stack
             sx={{
-              width: '100%',
-              minWidth: { xs: '300px', sm: '360px', md: '400px' },
-              gap: '1.5rem',
+              width: "100%",
+              minWidth: { xs: "300px", sm: "360px", md: "400px" },
+              gap: "1.5rem",
             }}
           >
-            {columns.map((column) => (
-              <TextField
-                key={column.accessorKey}
-                label={column.header}
-                name={column.accessorKey}
-                onChange={(e) =>
-                  setValues({ ...values, [e.target.name]: e.target.value })
-                }
-              />
-            ))}
+            {columns.map(
+              (column) =>
+                column.accessorKey !== "id" && (
+                  <TextField
+                    key={column.accessorKey}
+                    label={column.header}
+                    name={column.accessorKey}
+                    onChange={(e) =>
+                      setValues({ ...values, [e.target.name]: e.target.value })
+                    }
+                  />
+                )
+            )}
           </Stack>
         </form>
       </DialogContent>
-      <DialogActions sx={{ p: '1.25rem' }}>
+      <DialogActions sx={{ p: "1.25rem" }}>
         <Button onClick={onClose}>Cancel</Button>
         <Button color="secondary" onClick={handleSubmit} variant="contained">
           Create New Account
