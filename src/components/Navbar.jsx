@@ -14,7 +14,8 @@ const Navbar = () => {
   const { user, logout } = useContext(UserContext);
 
   const handleLogout = () => {
-    localStorage.removeItem("userLoginData");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     logout();
     toast.success("Logged out successfully!", {
       position: "bottom-center",
