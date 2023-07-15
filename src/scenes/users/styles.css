@@ -3,3 +3,17 @@
     padding-left: 35px;
     padding-right: 35px;
 }
+
+.css-zcbmsk-MuiButtonBase-root-MuiButton-root {
+    background-color: #802f59 !important;
+}
+
+
+.css-zcbmsk-MuiButtonBase-root-MuiButton-root:hover {
+    color: #802f59 !important;
+    background-color: white !important;
+}
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+    background-color: #802f59 !important;
+}
