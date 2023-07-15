@@ -28,7 +28,19 @@ const Users = () => {
 
   const handleCreateNewRow = (values) => {
     userData.push(values);
-    api.post("/auth/signup", values).then((res) => console.log(res));
+    api.post("/auth/signup", values).then((res) => {
+      toast.success("User Created!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      // console.log(res);
+    });
     setUserData([...userData]);
   };
 
@@ -36,7 +48,19 @@ const Users = () => {
     if (!Object.keys(validationErrors).length) {
       userData[row.index] = values;
       //send/receive api updates here, then refetch or update local table data for re-render
-      api.put("/user/update", values).then((res) => console.log(res));
+      api.put("/user/update", values).then((res) => {
+        toast.warning("User Updated!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        // console.log(res);
+      });
       setUserData([...userData]);
       exitEditingMode(); //required to exit editing mode and close modal
     }
@@ -52,9 +76,19 @@ const Users = () => {
         window.confirm(`Do you want to delete ${row.getValue("firstName")}`)
       ) {
         //send api delete request here, then refetch or update local table data for re-render
-        api
-          .delete(`/user/delete/${row.getValue("id")}`)
-          .then((res) => console.log(res));
+        api.delete(`/user/delete/${row.getValue("id")}`).then((res) => {
+          toast.warning("User Deleted!", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+          // console.log(res);
+        });
         userData.splice(row.index, 1);
         setUserData([...userData]);
       }
