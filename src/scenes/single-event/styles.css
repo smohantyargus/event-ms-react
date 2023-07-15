@@ -81,6 +81,14 @@
     justify-content: center;
 }
 
+.admin-section{
+    margin-top: 6rem;
+}
+
+.admin-section > h2 {
+    margin-bottom: 2rem;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }

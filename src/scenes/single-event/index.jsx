@@ -80,7 +80,7 @@ const Event = () => {
   return (
     <>
       <div className="event-container text-center">
-        Event Details
+        <h2>Event Details</h2>
         <div className="event-row-1 row">
           <div className="event-row-1-left event-box shadow col">
             {event.startDate?.slice(0, 10)} - {event.endDate?.slice(0, 10)}
@@ -117,8 +117,8 @@ const Event = () => {
           </div>
         </div>
         {adminAuth ? (
-          <>
-            Admin Options
+          <div className="admin-section">
+            <h2>Admin Options</h2>
             <div className="event-admin shadow">
               <button
                 className="btn btn-primary btn-lg"
@@ -132,7 +132,7 @@ const Event = () => {
               </button>
               <div>Number of attendees: {event.attendees?.length}</div>
             </div>
-          </>
+          </div>
         ) : (
           <></>
         )}

@@ -37,6 +37,20 @@ const AdminHome = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (endDate < startDate) {
+      // Display an error message or perform some other action
+      toast.warning("End date must be the same or later than the start date.", {
+        position: "bottom-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
     const eventData = {
       title,
       location,
