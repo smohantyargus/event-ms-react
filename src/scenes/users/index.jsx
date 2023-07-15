@@ -28,7 +28,7 @@ const Users = () => {
 
   const handleCreateNewRow = (values) => {
     userData.push(values);
-    api.post("/user/create", values).then((res) => console.log(res));
+    api.post("/auth/signup", values).then((res) => console.log(res));
     setUserData([...userData]);
   };
 
@@ -69,7 +69,7 @@ const Users = () => {
 
   // console.log(userData);
 
-  const columns = useMemo(
+  let columns = useMemo(
     () => [
       {
         accessorKey: "id", //access nested data with dot notation
@@ -95,6 +95,11 @@ const Users = () => {
         accessorKey: "username",
         header: "Email",
         size: 150,
+      },
+      {
+        accessorKey: "password",
+        header: "Password",
+        size: 0,
       },
     ],
     []
