@@ -84,11 +84,6 @@ const AllEvents = () => {
   let columns = useMemo(
     () => [
       {
-        accessorKey: "id", //access nested data with dot notation
-        header: "Event ID",
-        size: 200,
-      },
-      {
         accessorKey: "title",
         header: "Title",
         size: 150,
@@ -133,8 +128,6 @@ const AllEvents = () => {
           initialState={{ columnVisibility: { password: false } }}
           enableClickToCopy={true}
           enableRowNumbers={true}
-          // enableRowSelection={true}
-          // getRowCanExpand={true}
           editingMode="modal"
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
