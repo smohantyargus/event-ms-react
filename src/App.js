@@ -38,7 +38,7 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/new" element={<New />} />
+            <Route path="/new/:email" element={<New />} />
             <Route
               path="/allevents"
               element={

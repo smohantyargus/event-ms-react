@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./styles.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import UserContext from "context/user/UserContext";
 import { toast } from "react-toastify";
@@ -10,12 +10,14 @@ import api from "api";
 import logo from "../../icons/logo.png";
 
 const New = () => {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
-  const { user } = useContext(UserContext);
-  const useremail = user.email;
+  // const { user } = useContext(UserContext);
+  // const useremail = user?.email;
+
+  const { email } = useParams();
 
   // useEffect(() => {
   //   // console.log(user);
@@ -24,20 +26,28 @@ const New = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setEmail(user.email);
-
     let data = {
-      email: useremail,
+      email,
       otp,
     };
 
-    console.log(data);
+    // console.log(data);
 
     api
       .post("/user/verify-otp", data)
       .then((response) => {
         navigate("/login");
-        console.log(response);
+        toast.success("User Verified!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        // console.log(response);
       })
       .catch((error) => {
         // Handle the error
@@ -53,7 +63,7 @@ const New = () => {
           <div className="login-header">
             <h3>Event-MS Verify</h3>
           </div>
-          <p>OTP has been sent to {user?.email}</p>
+          <p>OTP has been sent to {email}</p>
           <input
             type="text"
             id="form3Example4"

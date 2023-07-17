@@ -385,15 +385,25 @@ const Register = () => {
       api
         .post("/auth/signup", data)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("user", JSON.stringify(response.data));
 
           api
             .post("/user/send-otp", otpData)
             .then((res) => {
-              navigate("/new");
-              console.log(res);
+              navigate(`/new/${response.data.email}`);
+              // console.log(res);
+              toast.info("Verify User!", {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
             })
             .catch((error) => {
               console.log(error);
@@ -418,16 +428,16 @@ const Register = () => {
           console.log(error);
         });
     } else {
-      // toast.error("Invalid User Details!", {
-      //   position: "bottom-center",
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "colored",
-      // });
+      toast.error("Invalid User Details!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
