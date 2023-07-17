@@ -59,6 +59,12 @@ const Event = () => {
     console.log(user);
     const eventId = id;
     const userId = user.id;
+    const emailRequest = { 
+      "email" : user.email,
+      "title" : event.title,
+      "startTime" : event.startTime,
+      "startDate" : event.startDate
+    }
     api
       .get(`/event/attend/${eventId}/${userId}`)
       .then((res) => {
@@ -74,6 +80,9 @@ const Event = () => {
           theme: "colored",
         });
       })
+      .catch((err) => console.log(err));
+
+    api.post("/event/attend/notify", emailRequest)
       .catch((err) => console.log(err));
   };
   <a href="#" className="ag-courses-item_link"></a>;
