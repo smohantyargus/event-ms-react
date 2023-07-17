@@ -8,6 +8,8 @@ export function RequireAuth({ children }) {
 
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
+  } else if (user.enabled !== "true") {
+    return <Navigate to="/new" state={{ from: location }} replace />;
   } else {
     return children;
   }

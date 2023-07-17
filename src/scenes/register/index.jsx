@@ -362,8 +362,8 @@ const Register = () => {
     // console.log(user_email, user_email_domain);
 
     if (
-      edata.includes(user_email) &&
-      (user_email_domain === "dev.com" || user_email_domain === "dev.in") &&
+      // edata.includes(user_email) &&
+      // (user_email_domain === "dev.com" || user_email_domain === "dev.in") &&
       firstName !== "" &&
       lastName !== "" &&
       password !== ""
@@ -378,39 +378,56 @@ const Register = () => {
         role,
       };
 
+      let otpData = {
+        email,
+      };
+
       api
         .post("/auth/signup", data)
         .then((response) => {
+          console.log(response);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("user", JSON.stringify(response.data));
+
+          api
+            .post("/user/send-otp", otpData)
+            .then((res) => {
+              navigate("/new");
+              console.log(res);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
           // Handle the response
           // console.log(response.data);
-          localStorage.setItem("token", response.data.token);
-          navigate("/login");
-          toast.success("User Registered!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          });
+          // localStorage.setItem("token", response.data.token);
+
+          // toast.success("User Registered!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          //   theme: "colored",
+          // });
         })
         .catch((error) => {
           // Handle the error
           console.log(error);
         });
     } else {
-      toast.error("Invalid User Details!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      // toast.error("Invalid User Details!", {
+      //   position: "bottom-center",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "colored",
+      // });
     }
   };
 
