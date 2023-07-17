@@ -11,6 +11,7 @@ import Event from "scenes/single-event";
 import { RequireAuth } from "state/RequireAuth";
 import { RequireAdminAuth } from "state/RequireAdminAuth";
 import Users from "scenes/users";
+import AllEvents from "scenes/allevents";
 
 function App() {
   return (
@@ -36,6 +37,16 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route
+              path="/allevents"
+              element={
+                <RequireAuth>
+                  <RequireAdminAuth>
+                    <AllEvents />
+                  </RequireAdminAuth>
+                </RequireAuth>
+              }
+            />
             <Route
               path="/users"
               element={

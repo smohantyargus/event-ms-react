@@ -112,7 +112,7 @@ const AdminHome = () => {
   };
 
   const handleEventsClick = () => {
-    navigate("/events");
+    navigate("/allevents");
   };
 
   const handleUsersClick = () => {
