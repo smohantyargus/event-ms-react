@@ -52,7 +52,7 @@
 
 .event-container{
     padding: 20px;
-    font-size: 2em;
+    font-size: 1.6em;
 }
 
 .event-box{
@@ -67,8 +67,12 @@
     /* display: grid;
     align-content: center; */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    /* overflow-y: scroll;
+    overflow-x: scroll; */
 }
 
 .event-admin{
@@ -98,4 +102,8 @@
     overflow-x: scroll;
     display: block;
     scroll-behavior: smooth;
+}
+
+.event-subhead{
+    font-size: 1.2rem;
 }

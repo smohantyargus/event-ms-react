@@ -92,24 +92,31 @@ const Event = () => {
       <div className="event-container text-center">
         <h2>Event Details</h2>
         <div className="event-row-1 row">
-          <div className="event-row-1-left event-box shadow col">
+          <div className="event-row-1-left event-box shadow col col-12 col-lg-3">
+            <p className="event-subhead">Event Date</p>
             {event.startDate?.slice(0, 10)} - {event.endDate?.slice(0, 10)}
           </div>
           <div className="event-row-1-middle event-box shadow col">
-            {event?.title}
+            <p className="event-subhead">Event Title</p>
+            <span style={{ color: "#802f59", fontSize: "2rem" }}>
+              {event?.title}
+            </span>
           </div>
-          <div className="event-row-1-right event-box shadow col">
+          <div className="event-row-1-right event-box shadow col col-12 col-lg-3">
+            <p className="event-subhead">Event Time</p>
             {event?.startTime} - {event?.endTime}
           </div>
         </div>
         <div className="event-row-2 event-box shadow event-desc">
+          <p className="event-subhead">Event Description</p>
           {event?.description}
         </div>
         <div className="event-row-3 row">
-          <div className="event-row-3-left event-box shadow col ">
+          <div className="event-row-3-left event-box shadow col col-12 col-lg-4">
+            <p className="event-subhead">Event Location</p>
             {event?.location}
           </div>
-          <div className="event-row-3-middle event-box shadow col">
+          <div className="event-row-3-middle event-box shadow col col-12 col-lg-4">
             <button
               className="btn btn-primary btn-lg"
               onClick={handleInterested}
@@ -123,6 +130,7 @@ const Event = () => {
             </button>
           </div>
           <div className="event-row-3-right event-box shadow col">
+            <p className="event-subhead">Event Additional Info</p>
             {event?.addInfo}
           </div>
         </div>
