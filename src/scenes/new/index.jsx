@@ -13,7 +13,7 @@ const New = () => {
   // const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-  const [minutes, setMinutes] = useState(1);
+  const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(0);
   let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
@@ -27,7 +27,7 @@ const New = () => {
   // }, [user]);
 
   const resendOtp = () => {
-    setMinutes(1);
+    setMinutes(5);
     setSeconds(0);
     let otpData = {
       email,
@@ -100,7 +100,7 @@ const New = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [seconds]);
+  }, [seconds, minutes]);
 
   return (
     <div className="login-container">
