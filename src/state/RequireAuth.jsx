@@ -1,9 +1,9 @@
 import { useLocation, Navigate } from "react-router-dom";
 import UserContext from "context/user/UserContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 export function RequireAuth({ children }) {
-  let { user, login } = useContext(UserContext);
+  let { user } = useContext(UserContext);
   let location = useLocation();
 
   let paramToGo = `/new/${user?.email}`;

@@ -4,11 +4,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import logo from "../icons/logo.png";
-import SearchBar from "scenes/search-bar";
-import axios from "axios";
+// import SearchBar from "scenes/search-bar";
+// import axios from "axios";
 
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Avatar, ButtonBase } from "@mui/material";

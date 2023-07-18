@@ -8,7 +8,7 @@ import React, {
 import { MaterialReactTable } from "material-react-table";
 
 import "./styles.css";
-import axios from "axios";
+// import axios from "axios";
 import api from "api";
 import { toast } from "react-toastify";
 import { Delete, Edit } from "@mui/icons-material";
@@ -121,29 +121,29 @@ const Users = () => {
   let columns = useMemo(
     () => [
       {
-        accessorKey: "id", //access nested data with dot notation
-        header: "User ID",
-        size: 200,
-      },
-      {
         accessorKey: "firstName",
         header: "First Name",
-        size: 150,
+        size: 100,
       },
       {
         accessorKey: "lastName",
         header: "Last Name",
-        size: 150,
+        size: 100,
       },
       {
         accessorKey: "role", //normal accessorKey
         header: "Role",
-        size: 20,
+        size: 10,
       },
       {
         accessorKey: "email",
         header: "Email",
-        size: 150,
+        size: 100,
+      },
+      {
+        accessorKey: "id", //access nested data with dot notation
+        header: "User ID",
+        size: 200,
       },
       {
         accessorKey: "password",

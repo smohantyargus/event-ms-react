@@ -8,20 +8,20 @@ import React, {
 import { MaterialReactTable } from "material-react-table";
 
 import "./styles.css";
-import axios from "axios";
+// import axios from "axios";
 import api from "api";
 import { toast } from "react-toastify";
 import { Delete, Edit } from "@mui/icons-material";
 import {
   Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
+  // Button,
+  // Dialog,
+  // DialogActions,
+  // DialogContent,
+  // DialogTitle,
   IconButton,
-  Stack,
-  TextField,
+  // Stack,
+  // TextField,
   Tooltip,
 } from "@mui/material";
 import UserContext from "context/user/UserContext";
@@ -29,7 +29,7 @@ import UserContext from "context/user/UserContext";
 const AllEvents = () => {
   const [eventData, setEventData] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
-  const [createModalOpen, setCreateModalOpen] = useState(false);
+  // const [createModalOpen, setCreateModalOpen] = useState(false);
   let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {

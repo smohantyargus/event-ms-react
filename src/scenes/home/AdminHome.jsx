@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "api";
-import { appBarClasses } from "@mui/material";
+// import { appBarClasses } from "@mui/material";
 
 const AdminHome = () => {
   const [title, setEventTitle] = useState("");
@@ -14,7 +14,7 @@ const AdminHome = () => {
   const [startTime, setEventStartTime] = useState("");
   const [endTime, setEventEndTime] = useState("");
   const [description, setEventDescription] = useState("");
-  const [eventLink, setEventLink] = useState("");
+  // const [eventLink, setEventLink] = useState("");
   const [addInfo, setEventAddInfo] = useState("");
 
   const [userCount, setUserCount] = useState(0);
@@ -59,7 +59,6 @@ const AdminHome = () => {
       startTime,
       endTime,
       description,
-      eventLink,
       addInfo,
     };
     // console.log(eventData);

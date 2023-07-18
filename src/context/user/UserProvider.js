@@ -1,5 +1,5 @@
 // UserProvider.js
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import UserContext from "./UserContext";
 
 const UserProvider = ({ children }) => {

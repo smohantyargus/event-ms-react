@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./styles.css";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import { useParams } from "react-router-dom";
+// import axios from "axios";
 import UserContext from "context/user/UserContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -105,7 +105,7 @@ const New = () => {
   return (
     <div className="login-container">
       <div class="login row shadow">
-        <img src={logo} className="arg-logo" />
+        <img src={logo} className="arg-logo" alt="Argusoft" />
         <form onSubmit={handleSubmit} className="text-center">
           {/* <h2>Event Management System</h2> */}
           <div className="login-header">

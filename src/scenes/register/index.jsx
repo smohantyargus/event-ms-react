@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "api";
@@ -448,7 +448,7 @@ const Register = () => {
   return (
     <div className="register-container">
       <div className="register row shadow">
-        <img src={logo} className="arg-logo" />
+        <img src={logo} className="arg-logo" alt="argusoft" />
         <form onSubmit={handleSubmit}>
           <div className="register-header">
             <h3>Event-MS Register</h3>
