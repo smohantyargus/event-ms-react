@@ -15,6 +15,8 @@ const New = () => {
   const navigate = useNavigate();
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
+  let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
+
   // const { user } = useContext(UserContext);
   // const useremail = user?.email;
 
@@ -25,7 +27,6 @@ const New = () => {
   // }, [user]);
 
   const resendOtp = () => {
-
     setMinutes(1);
     setSeconds(0);
     let otpData = {
@@ -55,11 +56,12 @@ const New = () => {
     };
 
     // console.log(data);
-
+    setVisibilityTrue();
     api
       .post("/user/verify-otp", data)
       .then((response) => {
         navigate("/login");
+        setVisibilityFalse();
         toast.success("User Verified!", {
           position: "bottom-center",
           autoClose: 5000,
@@ -74,6 +76,7 @@ const New = () => {
       })
       .catch((error) => {
         // Handle the error
+        setVisibilityFalse();
         console.log(error);
       });
   };

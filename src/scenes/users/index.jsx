@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { MaterialReactTable } from "material-react-table";
 
 import "./styles.css";
@@ -18,13 +24,13 @@ import {
   TextField,
   Tooltip,
 } from "@mui/material";
-import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
+import UserContext from "context/user/UserContext";
 
 const Users = () => {
   const [userData, setUserData] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
   const [createModalOpen, setCreateModalOpen] = useState(false);
+  let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   const handleCreateNewRow = (values) => {
     userData.push(values);
@@ -97,10 +103,17 @@ const Users = () => {
   );
 
   useEffect(() => {
+    setVisibilityTrue();
     api
       .get("/user/all")
-      .then((res) => setUserData(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setVisibilityFalse();
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        setVisibilityFalse();
+        console.log(err);
+      });
   }, []);
 
   // console.log(userData);

@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { MaterialReactTable } from "material-react-table";
 
 import "./styles.css";
@@ -18,11 +24,13 @@ import {
   TextField,
   Tooltip,
 } from "@mui/material";
+import UserContext from "context/user/UserContext";
 
 const AllEvents = () => {
   const [eventData, setEventData] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
   const [createModalOpen, setCreateModalOpen] = useState(false);
+  let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     if (!Object.keys(validationErrors).length) {
@@ -75,10 +83,17 @@ const AllEvents = () => {
   );
 
   useEffect(() => {
+    setVisibilityTrue();
     api
       .get("/event/all")
-      .then((res) => setEventData(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setVisibilityFalse();
+        setEventData(res.data);
+      })
+      .catch((err) => {
+        setVisibilityFalse();
+        console.log(err);
+      });
   }, []);
 
   let columns = useMemo(

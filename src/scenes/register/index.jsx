@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import api from "api";
 
 import logo from "../../icons/logo.png";
+import UserContext from "context/user/UserContext";
 
 const edata = [
   "akshatj",
@@ -343,6 +344,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   const role = "USER";
 
@@ -381,7 +383,7 @@ const Register = () => {
       let otpData = {
         email,
       };
-
+      setVisibilityTrue();
       api
         .post("/auth/signup", data)
         .then((response) => {
@@ -393,6 +395,7 @@ const Register = () => {
             .post("/user/send-otp", otpData)
             .then((res) => {
               navigate(`/new/${response.data.email}`);
+              setVisibilityFalse();
               // console.log(res);
               toast.info("Verify User!", {
                 position: "bottom-center",
@@ -406,6 +409,7 @@ const Register = () => {
               });
             })
             .catch((error) => {
+              setVisibilityFalse();
               console.log(error);
             });
           // Handle the response

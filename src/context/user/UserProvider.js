@@ -4,9 +4,8 @@ import UserContext from "./UserContext";
 
 const UserProvider = ({ children }) => {
   // const userLoginData = JSON.parse(localStorage.getItem("userLoginData"));
-  const [user, setUser] = useState(
-    JSON?.parse(localStorage.getItem("user"))
-  );
+  const [loaderVisible, setLoaderVisible] = useState(false);
+  const [user, setUser] = useState(JSON?.parse(localStorage.getItem("user")));
 
   const login = (userData) => {
     // Logic to perform login and set the user state
@@ -18,8 +17,25 @@ const UserProvider = ({ children }) => {
     setUser(null);
   };
 
+  const setVisibilityTrue = () => {
+    setLoaderVisible(true);
+  };
+
+  const setVisibilityFalse = () => {
+    setLoaderVisible(false);
+  };
+
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider
+      value={{
+        user,
+        login,
+        logout,
+        loaderVisible,
+        setVisibilityTrue,
+        setVisibilityFalse,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

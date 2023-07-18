@@ -18,15 +18,21 @@ const Event = () => {
   const [isInterested, setInterested] = useState(false);
   const { user } = useContext(UserContext);
   const adminAuth = user.role === "ADMIN";
+  let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   useEffect(() => {
+    setVisibilityTrue();
     api
       .get(`/event/${id}`)
       .then((res) => {
+        setVisibilityFalse();
         if (res.data.attendees.includes(user.id)) setInterested(true);
         setEvent(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setVisibilityFalse();
+        console.log(err);
+      });
   }, []);
 
   const handleDelete = (e) => {

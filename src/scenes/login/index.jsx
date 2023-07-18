@@ -16,6 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { login } = useContext(UserContext);
+  let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   // useEffect(() => {
   //   // console.log(user);
@@ -33,7 +34,7 @@ const Login = () => {
       email,
       password,
     };
-
+    setVisibilityTrue();
     api
       .post("/auth/signin", data)
       .then((response) => {
@@ -44,6 +45,7 @@ const Login = () => {
           localStorage.setItem("token", response.data.token);
           login(response.data);
           navigate("/");
+          setVisibilityFalse();
           toast.success(`Welcome! ${response.data.firstName}`, {
             position: "bottom-center",
             autoClose: 5000,
@@ -81,6 +83,7 @@ const Login = () => {
       })
       .catch((error) => {
         // Handle the error
+        setVisibilityFalse();
         toast.error("Wrong Credentials!", {
           position: "bottom-center",
           autoClose: 5000,

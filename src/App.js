@@ -13,8 +13,13 @@ import { RequireAdminAuth } from "state/RequireAdminAuth";
 import Users from "scenes/users";
 import AllEvents from "scenes/allevents";
 import New from "scenes/new";
+import { useContext } from "react";
+import UserContext from "context/user/UserContext";
+import Loading from "react-fullscreen-loading";
 
 function App() {
+  let { loaderVisible, setVisibilityTrue, setVisibilityFalse } =
+    useContext(UserContext);
   return (
     <div className="App">
       <BrowserRouter>
@@ -82,6 +87,11 @@ function App() {
         draggable
         pauseOnHover
         theme="colored"
+      />
+      <Loading
+        loading={loaderVisible}
+        background="rgba(0,0,0,0.4)"
+        loaderColor="#802f59"
       />
     </div>
   );

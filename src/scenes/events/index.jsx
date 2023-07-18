@@ -1,19 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import axios from "axios";
 import "./styles.css";
 // import Event from "scenes/single-event";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "scenes/search-bar";
 import api from "api";
+import UserContext from "context/user/UserContext";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
+  let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
+
   const getAllEvents = () => {
+    setVisibilityTrue();
     api
       .get("/event/all")
-      .then((res) => setEvents(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setVisibilityFalse();
+        setEvents(res.data);
+      })
+      .catch((err) => {
+        setVisibilityFalse();
+        console.log(err);
+      });
   };
 
   const handleSearch = (searchTerm) => {
