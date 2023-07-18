@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
@@ -13,7 +13,8 @@ const New = () => {
   // const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-
+  const [minutes, setMinutes] = useState(1);
+  const [seconds, setSeconds] = useState(0);
   // const { user } = useContext(UserContext);
   // const useremail = user?.email;
 
@@ -22,6 +23,28 @@ const New = () => {
   // useEffect(() => {
   //   // console.log(user);
   // }, [user]);
+
+  const resendOtp = () => {
+
+    setMinutes(1);
+    setSeconds(0);
+    let otpData = {
+      email,
+    };
+
+    api.post("/user/send-otp", otpData).then((res) => {
+      toast.info("Otp has been resent!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,6 +77,28 @@ const New = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
+
   return (
     <div className="login-container">
       <div class="login row shadow">
@@ -73,15 +118,38 @@ const New = () => {
             onChange={(e) => setOtp(e.target.value)}
             required
           />
+
+          <div className="countdown-text">
+            {seconds > 0 || minutes > 0 ? (
+              <p>
+                Time Remaining: {minutes < 5 ? `0${minutes}` : minutes}:
+                {seconds < 10 ? `0${seconds}` : seconds}
+              </p>
+            ) : (
+              <p>Didn't recieve code?</p>
+            )}
+
+            <button
+              disabled={seconds > 0 || minutes > 0}
+              style={{
+                color: seconds > 0 || minutes > 0 ? "#DFE3E8" : "#802f59",
+              }}
+              onClick={resendOtp}
+              type="button"
+              class="btn btn-lg resend"
+            >
+              Resend OTP
+            </button>
+          </div>
+
           <div>
             <button
               type="button"
-              class="btn btn-primary btn-lg"
+              class="btn btn-primary btn-lg verify"
               style={{
                 paddingLeft: "2.5rem",
                 paddingRight: "2.5rem",
                 marginBottom: "0.5rem",
-                backgroundColor: "#802f59",
                 borderColor: "#802f59",
               }}
               onClick={handleSubmit}

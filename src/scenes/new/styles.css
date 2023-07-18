@@ -1,0 +1,23 @@
+.countdown-text{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem 0;
+}
+
+.countdown-text > p {
+    margin: 0;
+    padding-top: 0.8rem;
+}
+
+.resend:hover{
+    border-color: #802f59;
+}
+
+.verify{
+    background-color: #802f59;
+}
+
+.verify:hover{
+    background-color: white;
+    color: #802f59;
+}
