@@ -52,6 +52,8 @@
 
 .event-container{
     padding: 20px;
+    margin-left: 11rem;
+    margin-right: 11rem;
     font-size: 1.6em;
 }
 
@@ -59,8 +61,8 @@
     height: 12rem;
     background-color: white;
     padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
     border-radius: 10px;
     margin-left: 5px;
     margin-right: 5px;
@@ -102,8 +104,41 @@
     overflow-x: scroll;
     display: block;
     scroll-behavior: smooth;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 .event-subhead{
     font-size: 1.2rem;
 }
+
+.my-col{
+    padding: 0 !important;
+    margin: 0;
+}
+
+.margin-padding{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+
+@media only screen and (max-width: 720px) {
+    .event-container{
+        padding: 20px;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        font-size: 1.2em;
+    }
+
+    .margin-padding{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .event-desc{
+        height: fit-content;
+    }
+    
+  }

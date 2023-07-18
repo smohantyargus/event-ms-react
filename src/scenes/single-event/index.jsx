@@ -98,17 +98,17 @@ const Event = () => {
       <div className="event-container text-center">
         <h2>Event Details</h2>
         <div className="event-row-1 row">
-          <div className="event-row-1-left event-box shadow col col-12 col-lg-3">
+          <div className="event-row-1-left event-box shadow col col-12 col-lg-3 my-col">
             <p className="event-subhead">Event Date</p>
             {event.startDate?.slice(0, 10)} - {event.endDate?.slice(0, 10)}
           </div>
-          <div className="event-row-1-middle event-box shadow col">
+          <div className="event-row-1-middle event-box shadow col margin-padding my-col">
             <p className="event-subhead">Event Title</p>
-            <span style={{ color: "#802f59", fontSize: "2rem" }}>
+            <span style={{ color: "#802f59", fontSize: "3rem" }}>
               {event?.title}
             </span>
           </div>
-          <div className="event-row-1-right event-box shadow col col-12 col-lg-3">
+          <div className="event-row-1-right event-box shadow col col-12 col-lg-3 my-col">
             <p className="event-subhead">Event Time</p>
             {event?.startTime} - {event?.endTime}
           </div>
@@ -118,11 +118,11 @@ const Event = () => {
           {event?.description}
         </div>
         <div className="event-row-3 row">
-          <div className="event-row-3-left event-box shadow col col-12 col-lg-4">
+          <div className="event-row-3-left event-box shadow col col-12 col-lg-4 my-col">
             <p className="event-subhead">Event Location</p>
             {event?.location}
           </div>
-          <div className="event-row-3-middle event-box shadow col col-12 col-lg-4">
+          <div className="event-row-3-middle event-box shadow col col-12 col-lg-4 margin-padding my-col">
             <button
               className="btn btn-primary btn-lg"
               onClick={handleInterested}
@@ -135,7 +135,7 @@ const Event = () => {
               {!isInterested ? "I'm Interested" : "Registered"}
             </button>
           </div>
-          <div className="event-row-3-right event-box shadow col">
+          <div className="event-row-3-right event-box shadow col my-col">
             <p className="event-subhead">Event Additional Info</p>
             {event?.addInfo}
           </div>
