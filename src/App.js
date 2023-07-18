@@ -39,6 +39,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/new/:email" element={<New />} />
+            <Route path="*" element={<Navigate to="/" />} />
             <Route
               path="/allevents"
               element={

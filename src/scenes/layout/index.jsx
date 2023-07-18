@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   const { user, login, logout } = useContext(UserContext);
-  if (user) {
+  if (user?.enabled === "true") {
     return (
       <div>
         <Navbar />

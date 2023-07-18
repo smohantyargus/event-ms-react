@@ -387,7 +387,7 @@ const Register = () => {
         .then((response) => {
           // console.log(response);
           localStorage.setItem("token", response.data.token);
-          localStorage.setItem("user", JSON.stringify(response.data));
+          // localStorage.setItem("userToVerify", JSON.stringify(response.data));
 
           api
             .post("/user/send-otp", otpData)
