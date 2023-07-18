@@ -99,6 +99,11 @@ const AllEvents = () => {
   let columns = useMemo(
     () => [
       {
+        accessorKey: "id",
+        header: "Id",
+        size: 150,
+      },
+      {
         accessorKey: "title",
         header: "Title",
         size: 150,
@@ -140,7 +145,7 @@ const AllEvents = () => {
           columns={columns}
           data={eventData}
           enableHiding={false}
-          initialState={{ columnVisibility: { password: false } }}
+          initialState={{ columnVisibility: { id: false } }}
           enableClickToCopy={true}
           enableRowNumbers={true}
           editingMode="modal"
