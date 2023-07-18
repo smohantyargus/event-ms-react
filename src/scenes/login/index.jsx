@@ -126,7 +126,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button className="btn mt-2 input" onClick={toggle}>
+          <button className="mt-2 input show-hide" onClick={toggle}>
             {showPassword ? "Hide Password" : "Show Password"}
           </button>
           <div>
