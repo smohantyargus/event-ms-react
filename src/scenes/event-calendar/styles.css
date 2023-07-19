@@ -1,0 +1,25 @@
+.rbc-event , .rbc-selected{
+    background-color: #802f59 !important;
+    border: none !important;
+}
+
+.calendar-main{
+    margin-top: 3rem;
+    width: 70%;
+}
+
+
+
+
+@media only screen and (max-width: 720px) {
+    .calendar-main{
+        margin-top: 3rem;
+        width: 90%;
+    }
+
+    .rbc-toolbar-label{
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+    
+  }

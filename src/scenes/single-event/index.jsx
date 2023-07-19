@@ -104,7 +104,7 @@ const Event = () => {
           </div>
           <div className="event-row-1-middle event-box shadow col margin-padding my-col">
             <p className="event-subhead">Event Title</p>
-            <span style={{ color: "#802f59", fontSize: "3rem" }}>
+            <span className="event-title" style={{ color: "#802f59" }}>
               {event?.title}
             </span>
           </div>

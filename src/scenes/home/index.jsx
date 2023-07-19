@@ -18,7 +18,7 @@ const Home = () => {
     return (
       <div>
         <UserHome />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }
