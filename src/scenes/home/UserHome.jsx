@@ -1,4 +1,5 @@
 import React from "react";
+import EventCalendar from "scenes/event-calendar";
 
 const UserHome = () => {
   return (
@@ -9,10 +10,12 @@ const UserHome = () => {
           Management System
         </h2>
       </div>
-      <div className="user-head-welcome">
+      {/* <div className="user-head-welcome">
         <h4>Welcome!</h4>
       </div>
-      <h5>To view all events click Events in navbar</h5>
+      <h5>To view all events click Events in navbar</h5> */}
+
+       <EventCalendar  />
     </div>
   );
 };
