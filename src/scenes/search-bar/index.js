@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch }) => {
 
   const clearSearch = () => {
     setSearchTerm("");
-  }
+  };
 
   return (
     <div className="search-bar">
@@ -27,7 +27,7 @@ const SearchBar = ({ onSearch }) => {
       <button className="btn btn-primary" onClick={handleSearch}>
         Search
       </button>
-      <button className='btn clear' onClick={clearSearch}>
+      <button className="btn clear" onClick={clearSearch}>
         Clear Search
       </button>
     </div>
