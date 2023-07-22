@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
-// import axios from "axios";
 import UserContext from "context/user/UserContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -17,10 +16,6 @@ const Login = () => {
 
   const { login } = useContext(UserContext);
   let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
-
-  // useEffect(() => {
-  //   // console.log(user);
-  // }, [user]);
 
   const toggle = (e) => {
     e.preventDefault();
@@ -38,8 +33,6 @@ const Login = () => {
     api
       .post("/auth/signin", data)
       .then((response) => {
-        // Handle the response
-        // console.log(response.data);
         if (response.data.token != null) {
           localStorage.setItem("user", JSON.stringify(response.data));
           localStorage.setItem("token", response.data.token);
@@ -82,7 +75,6 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        // Handle the error
         setVisibilityFalse();
         toast.error("Wrong Credentials!", {
           position: "bottom-center",
@@ -103,7 +95,6 @@ const Login = () => {
       <div class="login row shadow">
         <img src={logo} className="arg-logo" alt="Argusoft" />
         <form onSubmit={handleSubmit}>
-          {/* <h2>Event Management System</h2> */}
           <div className="login-header">
             <h3>Event-MS Login</h3>
           </div>
@@ -129,7 +120,6 @@ const Login = () => {
           <div
             style={{
               display: "flex",
-              // justifyContent: "center",
               alignItems: "center",
               flexWrap: "inherit",
             }}
@@ -147,7 +137,6 @@ const Login = () => {
           </div>
           <div>
             <button
-              // type="button"
               class="btn btn-primary"
               style={{
                 paddingLeft: "2.5rem",

@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-// import axios from "axios";
 import "./styles.css";
-// import Event from "scenes/single-event";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "scenes/search-bar";
 import api from "api";
@@ -52,8 +50,6 @@ const Events = () => {
           {events?.map((event) => (
             <li key={event?.id} onClick={() => handleClick(event)}>
               <div className="event ag-courses_item shadow">
-                {/* <h3>{event.eventTitle}</h3>
-                <p>{event.eventDescription.substring(0,25)}</p> */}
                 <a href="#" className="ag-courses-item_link">
                   <div className="ag-courses-item_bg"></div>
 

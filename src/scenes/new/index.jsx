@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import { useParams } from "react-router-dom";
-// import axios from "axios";
 import UserContext from "context/user/UserContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -10,21 +9,13 @@ import api from "api";
 import logo from "../../icons/logo.png";
 
 const New = () => {
-  // const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
   const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(0);
   let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
-  // const { user } = useContext(UserContext);
-  // const useremail = user?.email;
-
   const { email } = useParams();
-
-  // useEffect(() => {
-  //   // console.log(user);
-  // }, [user]);
 
   const resendOtp = () => {
     setMinutes(5);
@@ -55,7 +46,6 @@ const New = () => {
       otp,
     };
 
-    // console.log(data);
     setVisibilityTrue();
     api
       .post("/user/verify-otp", data)
@@ -72,10 +62,8 @@ const New = () => {
           progress: undefined,
           theme: "colored",
         });
-        // console.log(response);
       })
       .catch((error) => {
-        // Handle the error
         setVisibilityFalse();
         console.log(error);
       });
@@ -86,7 +74,6 @@ const New = () => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
       }
-
       if (seconds === 0) {
         if (minutes === 0) {
           clearInterval(interval);

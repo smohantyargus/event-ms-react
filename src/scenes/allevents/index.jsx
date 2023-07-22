@@ -12,24 +12,12 @@ import "./styles.css";
 import api from "api";
 import { toast } from "react-toastify";
 import { Delete, Edit } from "@mui/icons-material";
-import {
-  Box,
-  // Button,
-  // Dialog,
-  // DialogActions,
-  // DialogContent,
-  // DialogTitle,
-  IconButton,
-  // Stack,
-  // TextField,
-  Tooltip,
-} from "@mui/material";
+import { Box, IconButton, Tooltip } from "@mui/material";
 import UserContext from "context/user/UserContext";
 
 const AllEvents = () => {
   const [eventData, setEventData] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
-  // const [createModalOpen, setCreateModalOpen] = useState(false);
   let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
@@ -61,7 +49,6 @@ const AllEvents = () => {
   const handleDeleteRow = useCallback(
     (row) => {
       if (window.confirm(`Do you want to delete ${row.getValue("title")}`)) {
-        //send api delete request here, then refetch or update local table data for re-render
         api.delete(`/event/delete/${row.getValue("id")}`).then((res) => {
           toast.error("Event Deleted!", {
             position: "bottom-center",
@@ -73,7 +60,6 @@ const AllEvents = () => {
             progress: undefined,
             theme: "colored",
           });
-          // console.log(res);
         });
         eventData.splice(row.index, 1);
         setEventData([...eventData]);

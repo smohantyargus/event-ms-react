@@ -6,10 +6,8 @@ import { toast } from "react-toastify";
 import api from "api";
 
 import Box from "@mui/material/Box";
-// import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Avatar, ButtonBase } from "@mui/material";
 
 import logo from "../../icons/logo.png";
 
@@ -20,7 +18,6 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 350,
   bgcolor: "background.paper",
-  // border: "2px solid #000",
   borderRadius: "10px",
   boxShadow: 24,
   p: 4,
@@ -37,7 +34,6 @@ const ForgotPassword = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { login } = useContext(UserContext);
   let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   const handleReset = (e) => {
@@ -104,7 +100,6 @@ const ForgotPassword = () => {
       <div class="login row shadow">
         <img src={logo} className="arg-logo" alt="Argusoft" />
         <form onSubmit={handleSubmit}>
-          {/* <h2>Event Management System</h2> */}
           <div className="login-header">
             <h3>Forgot Password</h3>
           </div>

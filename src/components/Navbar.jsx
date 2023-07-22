@@ -4,11 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import logo from "../icons/logo.png";
-// import SearchBar from "scenes/search-bar";
-// import axios from "axios";
 
 import Box from "@mui/material/Box";
-// import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Avatar, ButtonBase } from "@mui/material";
@@ -20,7 +17,6 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 350,
   bgcolor: "background.paper",
-  // border: "2px solid #000",
   borderRadius: "10px",
   boxShadow: 24,
   p: 4,
@@ -104,10 +100,7 @@ const Navbar = () => {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul
-              class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-              // style="--bs-scroll-height: 100px;"
-            >
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
               <li class="nav-item">
                 <Link
                   class="nav-link active"
@@ -123,38 +116,6 @@ const Navbar = () => {
                   Events
                 </Link>
               </li>
-              {/* <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarScrollingDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Link
-                </a>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="navbarScrollingDropdown"
-                >
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li> */}
             </ul>
             <form class="d-flex">
               <ButtonBase sx={{ marginRight: "20px" }}>
@@ -163,13 +124,6 @@ const Navbar = () => {
                   onClick={handleOpen}
                 />
               </ButtonBase>
-              {/* <button
-                type="button"
-                class="btn btn-outline-dark my-2 mx-5 my-sm-0 d-flex"
-                onClick={handleOpen}
-              >
-                {user.firstName}
-              </button> */}
               <>
                 <Modal
                   open={open}
@@ -191,18 +145,6 @@ const Navbar = () => {
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                       Email: {user?.email}
                     </Typography>
-                    {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                      <button
-                        style={{
-                          backgroundColor: "#802f59",
-                          borderColor: "#802f59",
-                        }}
-                        class="btn btn-primary my-2 my-sm-0 d-flex"
-                        onClick={handleLogout}
-                      >
-                        Logout
-                      </button>
-                    </Typography> */}
                   </Box>
                 </Modal>
               </>

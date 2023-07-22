@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "api";
-// import { appBarClasses } from "@mui/material";
 
 const AdminHome = () => {
   const [title, setEventTitle] = useState("");
@@ -14,7 +12,6 @@ const AdminHome = () => {
   const [startTime, setEventStartTime] = useState("");
   const [endTime, setEventEndTime] = useState("");
   const [description, setEventDescription] = useState("");
-  // const [eventLink, setEventLink] = useState("");
   const [addInfo, setEventAddInfo] = useState("");
 
   const [userCount, setUserCount] = useState(0);
@@ -38,7 +35,6 @@ const AdminHome = () => {
     e.preventDefault();
 
     if (endDate < startDate) {
-      // Display an error message or perform some other action
       toast.warning("End date must be the same or later than the start date.", {
         position: "bottom-center",
         autoClose: 4000,
@@ -61,10 +57,6 @@ const AdminHome = () => {
       description,
       addInfo,
     };
-    // console.log(eventData);
-
-    // console.log(eventStartDate < eventEndDate);
-
     if (
       title === "" ||
       location === "" ||
@@ -89,8 +81,6 @@ const AdminHome = () => {
       api
         .post("/event/add", eventData)
         .then((response) => {
-          // Handle the response
-          // console.log(response.data);
           navigate(`/event/${response.data.id}`);
           toast("Event Created!", {
             position: "bottom-center",
@@ -104,7 +94,6 @@ const AdminHome = () => {
           });
         })
         .catch((error) => {
-          // Handle the error
           console.log(error);
         });
     }
@@ -220,16 +209,6 @@ const AdminHome = () => {
               onChange={(e) => setEventDescription(e.target.value)}
             />
           </div>
-          {/* <div class="form-group">
-            <label for="eventLink">Event Link (optional)</label>
-            <input
-              class="form-control form-control-lg"
-              type="text"
-              placeholder="Event Link"
-              id="eventLink"
-              onChange={(e) => setEventLink(e.target.value)}
-            />
-          </div> */}
           <div class="form-group">
             <label for="eventAddInfo">Event Additional Info *</label>
             <input

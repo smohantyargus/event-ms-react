@@ -1,12 +1,6 @@
-// import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./styles.css";
-// import description from "../../icons/pinned-notes.png";
-// import address from "../../icons/map.png";
-// import date from "../../icons/schedule.png";
-// import link from "../../icons/link.png";
-// import info from "../../icons/info.png";
 import { toast } from "react-toastify";
 import UserContext from "context/user/UserContext";
 import api from "api";
@@ -52,10 +46,8 @@ const Event = () => {
           progress: undefined,
           theme: "colored",
         });
-        // console.log(response.data);
       })
       .catch((error) => {
-        // Handle the error
         console.log(error);
       });
   };

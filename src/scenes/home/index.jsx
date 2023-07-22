@@ -2,7 +2,6 @@ import UserContext from "context/user/UserContext";
 import React, { useContext } from "react";
 import AdminHome from "./AdminHome";
 import UserHome from "./UserHome";
-// import { toast } from "react-toastify";
 import Footer from "components/Footer";
 
 const Home = () => {

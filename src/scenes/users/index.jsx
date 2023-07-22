@@ -8,7 +8,6 @@ import React, {
 import { MaterialReactTable } from "material-react-table";
 
 import "./styles.css";
-// import axios from "axios";
 import api from "api";
 import { toast } from "react-toastify";
 import { Delete, Edit } from "@mui/icons-material";
@@ -45,7 +44,6 @@ const Users = () => {
         progress: undefined,
         theme: "colored",
       });
-      // console.log(res);
     });
     setUserData([...userData]);
   };
@@ -53,7 +51,6 @@ const Users = () => {
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     if (!Object.keys(validationErrors).length) {
       userData[row.index] = values;
-      //send/receive api updates here, then refetch or update local table data for re-render
       api.put("/user/update", values).then((res) => {
         toast.info("User Updated!", {
           position: "bottom-center",
@@ -65,7 +62,6 @@ const Users = () => {
           progress: undefined,
           theme: "colored",
         });
-        // console.log(res);
       });
       setUserData([...userData]);
       exitEditingMode(); //required to exit editing mode and close modal
@@ -116,8 +112,6 @@ const Users = () => {
       });
   }, []);
 
-  // console.log(userData);
-
   let columns = useMemo(
     () => [
       {
@@ -164,8 +158,6 @@ const Users = () => {
           initialState={{ columnVisibility: { password: false } }}
           enableClickToCopy={true}
           enableRowNumbers={true}
-          // enableRowSelection={true}
-          // getRowCanExpand={true}
           editingMode="modal"
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
