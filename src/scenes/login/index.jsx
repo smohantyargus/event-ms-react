@@ -126,13 +126,25 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button
-            type="button"
-            className="mt-2 input show-hide"
-            onClick={toggle}
+          <div
+            style={{
+              display: "flex",
+              // justifyContent: "center",
+              alignItems: "center",
+              flexWrap: "inherit",
+            }}
           >
-            {showPassword ? "Hide Password" : "Show Password"}
-          </button>
+            <button
+              type="button"
+              className="mt-2 input show-hide"
+              onClick={toggle}
+            >
+              {showPassword ? "Hide Password" : "Show Password"}
+            </button>
+            <Link style={{ marginLeft: "auto" }} to="/forgotpassword">
+              Forgot Password?
+            </Link>
+          </div>
           <div>
             <button
               // type="button"

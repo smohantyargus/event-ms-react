@@ -16,6 +16,7 @@ import New from "scenes/new";
 import { useContext } from "react";
 import UserContext from "context/user/UserContext";
 import Loading from "react-fullscreen-loading";
+import ForgotPassword from "scenes/forgotpassword";
 
 function App() {
   let { loaderVisible, setVisibilityTrue, setVisibilityFalse } =
@@ -43,6 +44,7 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/new/:email" element={<New />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route
