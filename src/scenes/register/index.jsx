@@ -499,7 +499,7 @@ const Register = () => {
           <div>
             <button
               // type="button"
-              class="btn btn-primary btn-lg"
+              class="btn btn-primary"
               style={{
                 paddingLeft: "2.5rem",
                 paddingRight: "2.5rem",
@@ -513,7 +513,7 @@ const Register = () => {
             </button>
           </div>
           <p class="mt-4">
-            Already registered ? <Link to="/login">Login</Link>
+            Already registered? <Link to="/login">Login</Link>
           </p>
         </form>
       </div>

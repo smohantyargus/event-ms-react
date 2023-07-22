@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./styles.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserContext from "context/user/UserContext";
 import { toast } from "react-toastify";
 import api from "api";
@@ -117,10 +117,10 @@ const ForgotPassword = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <div>
+          <div className="mb-4">
             <button
               // type="button"
-              class="btn btn-primary btn-lg"
+              class="btn btn-primary"
               style={{
                 paddingLeft: "2.5rem",
                 paddingRight: "2.5rem",
@@ -133,6 +133,7 @@ const ForgotPassword = () => {
               Proceed
             </button>
           </div>
+          <Link to="/login">No I want to Login</Link>
         </form>
       </div>
       <>

@@ -148,7 +148,7 @@ const Login = () => {
           <div>
             <button
               // type="button"
-              class="btn btn-primary btn-lg"
+              class="btn btn-primary"
               style={{
                 paddingLeft: "2.5rem",
                 paddingRight: "2.5rem",
