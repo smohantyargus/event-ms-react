@@ -489,12 +489,16 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button className="btn mt-2 input show-hide" onClick={toggle}>
+          <button
+            type="button"
+            className="btn mt-2 input show-hide"
+            onClick={toggle}
+          >
             {showPassword ? "Hide Password" : "Show Password"}
           </button>
           <div>
             <button
-              type="button"
+              // type="button"
               class="btn btn-primary btn-lg"
               style={{
                 paddingLeft: "2.5rem",
