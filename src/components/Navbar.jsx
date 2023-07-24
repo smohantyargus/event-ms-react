@@ -118,7 +118,7 @@ const Navbar = () => {
               </li>
             </ul>
             <form class="d-flex">
-              <ButtonBase sx={{ marginRight: "20px" }}>
+              <ButtonBase sx={{ marginRight: "20px", borderRadius: "50%" }}>
                 <Avatar
                   {...stringAvatar(`${user.firstName} ${user.lastName}`)}
                   onClick={handleOpen}
