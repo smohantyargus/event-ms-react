@@ -78,3 +78,7 @@
 .user-head-welcome{
     display: block;
 }
+
+.MuiCircularProgress-svg, .css-1idz92c-MuiCircularProgress-svg{
+    color: #802f59 !important;
+}

@@ -3,6 +3,7 @@ import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "api";
+import { CircularProgress } from "@mui/material";
 
 const AdminHome = () => {
   const [title, setEventTitle] = useState("");
@@ -16,16 +17,24 @@ const AdminHome = () => {
 
   const [userCount, setUserCount] = useState(0);
   const [eventCount, setEventCount] = useState(0);
+  const [userLoading, setUserLoading] = useState(true);
+  const [eventLoading, setEventLoading] = useState(true);
 
   useEffect(() => {
     api
       .get("/user/countusers")
-      .then((res) => setUserCount(res.data))
+      .then((res) => {
+        setUserCount(res.data);
+        setUserLoading(false);
+      })
       .catch((err) => console.log(err));
 
     api
       .get("/event/countevents")
-      .then((res) => setEventCount(res.data))
+      .then((res) => {
+        setEventCount(res.data);
+        setEventLoading(false);
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -116,14 +125,31 @@ const AdminHome = () => {
         <div className="admin-home-stats row">
           <div className="admin-home-users shadow mb-4 col col-2">
             <h1>Total Users: </h1>
-            <p className="admin-home-users-count">{userCount}</p>
+            {!userLoading ? (
+              <p className="admin-home-users-count">{userCount}</p>
+            ) : (
+              <CircularProgress
+                color="secondary"
+                size={90}
+                sx={{ marginTop: "45px", marginBottom: "45px" }}
+              />
+            )}
             <button className="btn admin-home-btn" onClick={handleUsersClick}>
               Show all Users
             </button>
           </div>
           <div className="admin-home-events shadow mb-4 col col-2">
             <h1>Total Events: </h1>
-            <p className="admin-home-events-count">{eventCount}</p>
+            {!eventLoading ? (
+              <p className="admin-home-users-count">{eventCount}</p>
+            ) : (
+              <CircularProgress
+                color="secondary"
+                size={90}
+                sx={{ marginTop: "45px", marginBottom: "45px" }}
+              />
+            )}
+            {/* <p className="admin-home-events-count">{eventCount}</p> */}
             <button className="btn admin-home-btn" onClick={handleEventsClick}>
               Show all Events
             </button>
