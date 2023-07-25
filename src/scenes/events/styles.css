@@ -95,9 +95,13 @@
 .ag-courses-item_date-box {
   font-size: 18px;
   color: #802F59;
-
+  
   z-index: 2;
   position: relative;
+}
+
+.dte{
+  font-weight: bold;
 }
 
 .ag-courses-item_date {

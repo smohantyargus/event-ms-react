@@ -62,10 +62,10 @@ const Events = () => {
                       {event?.startTime}
                     </span>
                   </div>
-                  <div className="ag-courses-item_date-box">
+                  <div className="ag-courses-item_date-box ">
                     {event?.location}
                   </div>
-                  <div className="ag-courses-item_date-box">
+                  <div className="ag-courses-item_date-box dte">
                     {event?.startDate?.substring(0, 10)}
                   </div>
                 </a>
