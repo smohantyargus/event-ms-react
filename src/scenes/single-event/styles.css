@@ -82,6 +82,10 @@
     justify-content: center;
 }
 
+.event-admin > button {
+    margin-bottom: 1rem;
+}
+
 .admin-section{
     margin-top: 6rem;
 }
