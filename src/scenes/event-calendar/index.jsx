@@ -27,7 +27,7 @@ const EventCalendar = () => {
 
   const localizer = momentLocalizer(moment);
   return (
-    <div className="calendar-main shadow">
+    <div className="calendar-main shadow p-3">
       <Calendar
         localizer={localizer}
         events={events}

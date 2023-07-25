@@ -3,9 +3,15 @@
     border: none !important;
 }
 
+.rbc-toolbar-label{
+    color: #802f59;
+    font-weight: bold;
+}
+
 .calendar-main{
     margin-top: 3rem;
     width: 70%;
+    border-radius: 10px;
 }
 
 
