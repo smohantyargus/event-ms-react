@@ -161,11 +161,10 @@ const Navbar = () => {
                 </Link>
               </li>
               <li
-                className="nav-link active"
+                className="nav-link active my-ev"
                 style={{
                   border: "2px #802f59 solid",
                   padding: "5px 10px 5px 10px",
-                  marginLeft: "20px",
                   borderRadius: "4px",
                   color: "white",
                   backgroundColor: "#802f59",
