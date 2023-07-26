@@ -2,13 +2,14 @@ import UserContext from "context/user/UserContext";
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import api from "api";
 import logo from "../icons/logo.png";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Avatar, ButtonBase } from "@mui/material";
+import { Avatar, ButtonBase, Grid } from "@mui/material";
+import { useEffect } from "react";
 
 const style = {
   position: "absolute",
@@ -16,6 +17,18 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 350,
+  bgcolor: "background.paper",
+  borderRadius: "10px",
+  boxShadow: 24,
+  p: 4,
+};
+
+const AllEventsStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "80vw",
   bgcolor: "background.paper",
   borderRadius: "10px",
   boxShadow: 24,
@@ -61,6 +74,12 @@ const Navbar = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [allEventsOpen, setAllEventsOpen] = React.useState(false);
+  const handleallEventsOpen = () => setAllEventsOpen(true);
+  const handleallEventsClose = () => setAllEventsOpen(false);
+
+  const [myAllEvents, setAllMyEvents] = useState([]);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -77,6 +96,31 @@ const Navbar = () => {
     });
     navigate("/login");
   };
+
+  const handleMyAllEventsClick = () => {
+    handleallEventsOpen();
+    const userID = JSON?.parse(localStorage.getItem("user")).id;
+    api
+      .get(`/user/my-events/${userID}`)
+      .then((res) => {
+        setAllMyEvents(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    const userID = JSON?.parse(localStorage.getItem("user")).id;
+    api
+      .get(`/user/my-events/${userID}`)
+      .then((res) => {
+        setAllMyEvents(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
@@ -116,6 +160,20 @@ const Navbar = () => {
                   Events
                 </Link>
               </li>
+              <li
+                className="nav-link active"
+                style={{
+                  border: "2px #802f59 solid",
+                  padding: "5px 10px 5px 10px",
+                  marginLeft: "20px",
+                  borderRadius: "4px",
+                  color: "white",
+                  backgroundColor: "#802f59",
+                  cursor: "pointer",
+                }}
+              >
+                <span onClick={handleMyAllEventsClick}>My Events</span>
+              </li>
             </ul>
             <form class="d-flex">
               <ButtonBase sx={{ marginRight: "20px", borderRadius: "50%" }}>
@@ -145,6 +203,71 @@ const Navbar = () => {
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                       Email: {user?.email}
                     </Typography>
+                  </Box>
+                </Modal>
+              </>
+              {/* NEW MODAL FOR ALL EVENTS */}
+              <>
+                <Modal
+                  open={allEventsOpen}
+                  onClose={handleallEventsClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={AllEventsStyle}>
+                    <Typography
+                      id="modal-modal-title"
+                      variant="h4"
+                      component="h2"
+                    >
+                      My Events
+                    </Typography>
+
+                    {myAllEvents.length ? (
+                      <Grid
+                        container
+                        sx={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        {myAllEvents?.map((events) => (
+                          <Grid
+                            item
+                            lg={3.8}
+                            md={5.8}
+                            xs={12}
+                            sx={{
+                              marginBottom: "10px",
+                              marginTop: "10px",
+                              marginRight: "5px",
+                              marginLeft: "5px",
+                              width: "45%",
+                              backgroundColor: "#802f59",
+                              color: "white",
+                              padding: "1rem",
+                              borderRadius: "10px",
+                            }}
+                          >
+                            <Typography variant="h5" component="h2">
+                              {events?.title}
+                            </Typography>
+                            <Typography variant="h6" component="h4">
+                              {events?.startDate} | {events?.startTime}
+                            </Typography>
+                          </Grid>
+                        ))}
+                      </Grid>
+                    ) : (
+                      <Typography
+                        variant="h6"
+                        component="h4"
+                        sx={{ marginTop: "20px" }}
+                      >
+                        You have not registered in any events!
+                      </Typography>
+                    )}
                   </Box>
                 </Modal>
               </>
