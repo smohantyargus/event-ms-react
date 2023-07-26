@@ -102,12 +102,25 @@
     overflow-x: scroll;
     display: block;
     scroll-behavior: smooth;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: justify;
+}
+
+.att {
+    background-color: #802f59;
+    border-color: #802f59 !important;
+}
+
+.att:hover{
+    background-color: white !important;
+    color: #802f59;
+    border-color: #802f59;
 }
 
 .event-subhead{
     font-size: 1.2rem;
+    text-align: center;
 }
 
 .my-col{

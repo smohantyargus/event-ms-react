@@ -117,12 +117,12 @@ const Event = () => {
             {event?.location}
           </div>
           <div className="event-row-3-middle event-box shadow col col-12 col-lg-4 margin-padding my-col">
+            <p className="event-subhead" >{!isInterested ? "Are you interested?" : ""}</p>
             <button
-              className="btn btn-primary btn-lg"
+              className="btn btn-primary btn-lg att"
               onClick={handleInterested}
               style={{
-                backgroundColor: "#802f59",
-                borderColor: "#802f59",
+                backgroundColor: "#802f59"
               }}
               disabled={isInterested}
             >
