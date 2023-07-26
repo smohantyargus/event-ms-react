@@ -55,6 +55,7 @@ const Event = () => {
   const handleInterested = (e) => {
     e.preventDefault();
     // console.log(user);
+    setVisibilityTrue();
     const eventId = id;
     const userId = user.id;
     const emailRequest = {
@@ -67,6 +68,7 @@ const Event = () => {
       .get(`/event/attend/${eventId}/${userId}`)
       .then((res) => {
         setInterested(true);
+        setVisibilityFalse();
         toast.success(`Thank you for registering!`, {
           position: "bottom-center",
           autoClose: 5000,
