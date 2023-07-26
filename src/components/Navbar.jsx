@@ -211,7 +211,7 @@ const Navbar = () => {
                   open={allEventsOpen}
                   onClose={handleallEventsClose}
                   aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
+                  // aria-describedby="modal-modal-description"
                 >
                   <Box sx={AllEventsStyle}>
                     <Typography
