@@ -61,7 +61,7 @@ const Register = () => {
               setVisibilityFalse();
               toast.info("Verify User!", {
                 position: "bottom-center",
-                autoClose: 5000,
+                autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -81,7 +81,7 @@ const Register = () => {
     } else {
       toast.error("Invalid User Details!", {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

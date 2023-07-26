@@ -41,7 +41,7 @@ const Login = () => {
           setVisibilityFalse();
           toast.success(`Welcome! ${response.data.firstName}`, {
             position: "bottom-center",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -52,7 +52,7 @@ const Login = () => {
           if (response.data.role === "ADMIN") {
             toast.info("Admin Login!", {
               position: "bottom-center",
-              autoClose: 5000,
+              autoClose: 3000,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -64,7 +64,7 @@ const Login = () => {
         } else {
           toast.error("Wrong Credentials!", {
             position: "bottom-center",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -78,7 +78,7 @@ const Login = () => {
         setVisibilityFalse();
         toast.error("Wrong Credentials!", {
           position: "bottom-center",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,

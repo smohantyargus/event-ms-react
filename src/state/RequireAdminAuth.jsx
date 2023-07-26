@@ -10,7 +10,7 @@ export function RequireAdminAuth({ children }) {
   if (user.role !== "ADMIN") {
     toast.warning("Access Denied!", {
       position: "bottom-center",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

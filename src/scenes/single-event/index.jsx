@@ -31,14 +31,15 @@ const Event = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-
+    setVisibilityTrue();
     api
       .delete(`/event/delete/${id}`)
       .then((response) => {
+        setVisibilityFalse();
         navigate("/events");
         toast.warning("Event Deleted!", {
           position: "bottom-center",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -48,6 +49,7 @@ const Event = () => {
         });
       })
       .catch((error) => {
+        setVisibilityFalse();
         console.log(error);
       });
   };
@@ -71,7 +73,7 @@ const Event = () => {
         setVisibilityFalse();
         toast.success(`Thank you for registering!`, {
           position: "bottom-center",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -80,7 +82,10 @@ const Event = () => {
           theme: "colored",
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setVisibilityFalse();
+        console.log(err);
+      });
 
     api
       .post("/event/attend/notify", emailRequest)
@@ -117,12 +122,14 @@ const Event = () => {
             {event?.location}
           </div>
           <div className="event-row-3-middle event-box shadow col col-12 col-lg-4 margin-padding my-col">
-            <p className="event-subhead" >{!isInterested ? "Are you interested?" : ""}</p>
+            <p className="event-subhead">
+              {!isInterested ? "Are you interested?" : ""}
+            </p>
             <button
               className="btn btn-primary btn-lg att"
               onClick={handleInterested}
               style={{
-                backgroundColor: "#802f59"
+                backgroundColor: "#802f59",
               }}
               disabled={isInterested}
             >

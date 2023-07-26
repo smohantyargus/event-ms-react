@@ -27,7 +27,7 @@ const AllEvents = () => {
       api.put("/event/update", values).then((res) => {
         toast.info("Event Updated!", {
           position: "bottom-center",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -52,7 +52,7 @@ const AllEvents = () => {
         api.delete(`/event/delete/${row.getValue("id")}`).then((res) => {
           toast.error("Event Deleted!", {
             position: "bottom-center",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

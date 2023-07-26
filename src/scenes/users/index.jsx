@@ -36,7 +36,7 @@ const Users = () => {
     api.post("/auth/signup", values).then((res) => {
       toast.success("User Created!", {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -54,7 +54,7 @@ const Users = () => {
       api.put("/user/update", values).then((res) => {
         toast.info("User Updated!", {
           position: "bottom-center",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -81,7 +81,7 @@ const Users = () => {
         api.delete(`/user/delete/${row.getValue("id")}`).then((res) => {
           toast.error("User Deleted!", {
             position: "bottom-center",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

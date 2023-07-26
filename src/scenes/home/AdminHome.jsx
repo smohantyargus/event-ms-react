@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "api";
 import { CircularProgress } from "@mui/material";
+import UserContext from "context/user/UserContext";
 
 const AdminHome = () => {
   const [title, setEventTitle] = useState("");
@@ -19,6 +20,7 @@ const AdminHome = () => {
   const [eventCount, setEventCount] = useState(0);
   const [userLoading, setUserLoading] = useState(true);
   const [eventLoading, setEventLoading] = useState(true);
+  let { setVisibilityTrue, setVisibilityFalse } = useContext(UserContext);
 
   useEffect(() => {
     api
@@ -78,7 +80,7 @@ const AdminHome = () => {
     ) {
       toast.warning("Enter All Fields Correctly!", {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -87,13 +89,15 @@ const AdminHome = () => {
         theme: "colored",
       });
     } else {
+      setVisibilityTrue();
       api
         .post("/event/add", eventData)
         .then((response) => {
+          setVisibilityFalse();
           navigate(`/event/${response.data.id}`);
-          toast("Event Created!", {
+          toast.info("Event Created!", {
             position: "bottom-center",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -103,6 +107,7 @@ const AdminHome = () => {
           });
         })
         .catch((error) => {
+          setVisibilityFalse();
           console.log(error);
         });
     }
@@ -149,7 +154,6 @@ const AdminHome = () => {
                 sx={{ marginTop: "45px", marginBottom: "45px" }}
               />
             )}
-            {/* <p className="admin-home-events-count">{eventCount}</p> */}
             <button className="btn admin-home-btn" onClick={handleEventsClick}>
               Show all Events
             </button>
