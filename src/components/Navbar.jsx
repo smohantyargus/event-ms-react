@@ -18,7 +18,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 350,
   bgcolor: "background.paper",
-  borderRadius: "10px",
+  borderRadius: "7px",
   boxShadow: 24,
   p: 4,
 };
@@ -30,7 +30,7 @@ const AllEventsStyle = {
   transform: "translate(-50%, -50%)",
   width: "80vw",
   bgcolor: "background.paper",
-  borderRadius: "10px",
+  borderRadius: "7px",
   boxShadow: 24,
   p: 4,
 };
@@ -246,7 +246,7 @@ const Navbar = () => {
                               backgroundColor: "#802f59",
                               color: "white",
                               padding: "1rem",
-                              borderRadius: "10px",
+                              borderRadius: "7px",
                             }}
                           >
                             <Typography variant="h5" component="h2">

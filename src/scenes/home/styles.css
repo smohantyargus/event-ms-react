@@ -13,14 +13,14 @@
 
 .admin-home-welcome{
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 7px;
     background-color: white;
     width: 100%;
 }
 
 .admin-home-users, .admin-home-events{
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 7px;
     background-color: white;
     width: 100%;
     height: 100%;
@@ -45,7 +45,7 @@
 
 .admin-home-main-container-right{
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 7px;
     background-color: white;
     height: 100%;
 }
