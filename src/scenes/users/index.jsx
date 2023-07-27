@@ -33,7 +33,7 @@ const Users = () => {
 
   const handleCreateNewRow = (values) => {
     userData.push(values);
-    api.post("/auth/signup", values).then((res) => {
+    api.post("/auth/direct-signup", values).then((res) => {
       toast.success("User Created!", {
         position: "bottom-center",
         autoClose: 3000,
