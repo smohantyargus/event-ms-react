@@ -36,6 +36,8 @@ const Login = () => {
         if (response.data.token != null) {
           localStorage.setItem("user", JSON.stringify(response.data));
           localStorage.setItem("token", response.data.token);
+          localStorage.setItem("npc", response.data.needForPasswordChange);
+          localStorage.setItem("enabled", response.data.enabled);
           login(response.data);
           navigate("/");
           setVisibilityFalse();

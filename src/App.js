@@ -17,6 +17,8 @@ import { useContext } from "react";
 import UserContext from "context/user/UserContext";
 import Loading from "react-fullscreen-loading";
 import ForgotPassword from "scenes/forgotpassword";
+import { RequirePasswordChange } from "state/RequireChangePassword";
+import ChangePassword from "scenes/changepassword";
 
 function App() {
   let { loaderVisible, setVisibilityTrue, setVisibilityFalse } =
@@ -30,7 +32,9 @@ function App() {
               path="/"
               element={
                 <RequireAuth>
-                  <Home />
+                  <RequirePasswordChange>
+                    <Home />
+                  </RequirePasswordChange>
                 </RequireAuth>
               }
             />
@@ -38,13 +42,16 @@ function App() {
               path="/events"
               element={
                 <RequireAuth>
-                  <Events />
+                  <RequirePasswordChange>
+                    <Events />
+                  </RequirePasswordChange>
                 </RequireAuth>
               }
             />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/changepassword" element={<ChangePassword />} />
             <Route path="/new/:email" element={<New />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route
@@ -52,7 +59,9 @@ function App() {
               element={
                 <RequireAuth>
                   <RequireAdminAuth>
-                    <AllEvents />
+                    <RequirePasswordChange>
+                      <AllEvents />
+                    </RequirePasswordChange>
                   </RequireAdminAuth>
                 </RequireAuth>
               }
@@ -62,7 +71,9 @@ function App() {
               element={
                 <RequireAuth>
                   <RequireAdminAuth>
-                    <Users />
+                    <RequirePasswordChange>
+                      <Users />
+                    </RequirePasswordChange>
                   </RequireAdminAuth>
                 </RequireAuth>
               }
@@ -71,7 +82,9 @@ function App() {
               path="/event/:id"
               element={
                 <RequireAuth>
-                  <Event />
+                  <RequirePasswordChange>
+                    <Event />
+                  </RequirePasswordChange>
                 </RequireAuth>
               }
             />

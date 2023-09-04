@@ -5,6 +5,9 @@ import UserContext from "./UserContext";
 const UserProvider = ({ children }) => {
   const [loaderVisible, setLoaderVisible] = useState(false);
   const [user, setUser] = useState(JSON?.parse(localStorage.getItem("user")));
+  const [needForPasswordChange, setNeedForPasswordChange] = useState(
+    JSON?.parse(localStorage.getItem("npc"))
+  );
 
   const login = (userData) => {
     setUser(userData);
@@ -22,6 +25,10 @@ const UserProvider = ({ children }) => {
     setLoaderVisible(false);
   };
 
+  const updateNeedForPasswordChange = () => {
+    setNeedForPasswordChange(false);
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -31,6 +38,8 @@ const UserProvider = ({ children }) => {
         loaderVisible,
         setVisibilityTrue,
         setVisibilityFalse,
+        needForPasswordChange,
+        setNeedForPasswordChange,
       }}
     >
       {children}

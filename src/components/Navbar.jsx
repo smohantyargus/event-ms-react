@@ -83,6 +83,8 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("npc");
+    localStorage.removeItem("enabled");
     logout();
     toast.success("Logged out successfully!", {
       position: "bottom-center",
