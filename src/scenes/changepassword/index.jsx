@@ -34,12 +34,8 @@ const ChangePassword = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  let {
-    setVisibilityTrue,
-    setVisibilityFalse,
-    user,
-    setNeedForPasswordChange,
-  } = useContext(UserContext);
+  let { setVisibilityTrue, setVisibilityFalse, user, logout } =
+    useContext(UserContext);
 
   const handleReset = (e) => {
     const resetPassData = {
@@ -64,7 +60,7 @@ const ChangePassword = () => {
           progress: undefined,
           theme: "colored",
         });
-        setNeedForPasswordChange();
+        logout();
         navigate("/");
       })
       .catch((error) => {

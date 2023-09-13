@@ -32,9 +32,7 @@ function App() {
               path="/"
               element={
                 <RequireAuth>
-                  <RequirePasswordChange>
-                    <Home />
-                  </RequirePasswordChange>
+                  <Home />
                 </RequireAuth>
               }
             />
@@ -42,9 +40,7 @@ function App() {
               path="/events"
               element={
                 <RequireAuth>
-                  <RequirePasswordChange>
-                    <Events />
-                  </RequirePasswordChange>
+                  <Events />
                 </RequireAuth>
               }
             />
@@ -59,9 +55,7 @@ function App() {
               element={
                 <RequireAuth>
                   <RequireAdminAuth>
-                    <RequirePasswordChange>
-                      <AllEvents />
-                    </RequirePasswordChange>
+                    <AllEvents />
                   </RequireAdminAuth>
                 </RequireAuth>
               }
@@ -71,9 +65,7 @@ function App() {
               element={
                 <RequireAuth>
                   <RequireAdminAuth>
-                    <RequirePasswordChange>
-                      <Users />
-                    </RequirePasswordChange>
+                    <Users />
                   </RequireAdminAuth>
                 </RequireAuth>
               }
@@ -82,9 +74,7 @@ function App() {
               path="/event/:id"
               element={
                 <RequireAuth>
-                  <RequirePasswordChange>
-                    <Event />
-                  </RequirePasswordChange>
+                  <Event />
                 </RequireAuth>
               }
             />
