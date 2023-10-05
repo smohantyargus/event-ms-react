@@ -103,21 +103,33 @@ const AllEvents = () => {
         accessorKey: "startDate", //normal accessorKey
         header: "Start Date",
         size: 150,
+        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+          type: "date",
+        }),
       },
       {
         accessorKey: "endDate",
         header: "End Date",
         size: 150,
+        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+          type: "date",
+        }),
       },
       {
         accessorKey: "startTime",
         header: "Start Time",
         size: 150,
+        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+          type: "time",
+        }),
       },
       {
         accessorKey: "endTime",
         header: "End Time",
         size: 150,
+        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+          type: "time",
+        }),
       },
     ],
     []
